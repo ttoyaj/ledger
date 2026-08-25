@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Ledger — floating to-dos</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjogIlRoZSBMZWRnZXIiLCAic2hvcnRfbmFtZSI6ICJMZWRnZXIiLCAiZGVzY3JpcHRpb24iOiAiRmxvYXRpbmcgdG8tZG9zLCBoYWJpdHMsIGFuZCBkYWlseSByZXBvcnRzLiIsICJzdGFydF91cmwiOiAiLiIsICJzY29wZSI6ICIuIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNlZmU5ZGMiLCAidGhlbWVfY29sb3IiOiAiIzJiMjcyMyIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFDTTBsRVFWUjRuTzNjTVE0QlVSUkFVY1NxdERhZ21RMVltRFVvdFBhbVY0ak0vUmljMDVOZjNMeThZdkxXbDJtM2dyazJuMzRBMzAxQUpBSWlFUkNKZ0VnRVJDSWdFZ0dSQ0loRVFDUUNJaEVRaVlCSUJFUWlJQklCa1FpSVJFQWtBaUlSRUltQVNBUkVJaUFTQVpFSWlFUkFKQUlpRVJDSmdFaTJZLzl1ZnpyUCsrSDFlQmo1RHQ3RkJDSVJFSW1BU0FSRU1uaUp2dk5nTlo2OWJyTW9KaENKZ0VnRVJDSWdFZ0dSQ0loRVFDUUNJaEVRaVlCSUJFUWlJQklCa1FpSVJFQWtBaUlSRU1scnYwajAyZUhQTTRGSUJFUWlJQklCa2J4MmlYNmVkZnR0eHA0aE1JRklCRVFpSUJJQmtRaUlSRUFrQWlKWlg2YmRwOS9BRnpPQlNBUkVJaUFTQVpFSWlFUkFKQUlpRVJDSmdFZ0VSQ0lnRWdHUkNJaEVRQ1FDSWhFUWlZQklCRVFpSUJJQmtRaUlSRUFrQWlJUkVJbUFTQVJFTXZqRW5VdDF5K2ZFSFFzaUlCSUJrUWlJUkVBa0FpSVJFSWtUZHlRbUVJbUFTQVJFSWlBU0FaRUlpRVJBSkFJaUVSQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlCSUJrUWlJUkVBa0FpSVJFSWtMWlgvSGhUSVdSRUFrQWlJUkVJbUFTQVJFSWlBU0Y4cElUQ0FTQVpFSWlFUkFKQUlpRVJDSmdFZ0VSQ0lnRWdHUkNJaEVRQ1FDSWhFUWlZQklCRVFpSUJJQmtRaUlSRUFrQWlJUkVJbUFTQVJFSWlBU0FaRUlpRVJBSkFJaUVSQ0pnRWdFUkNJZ0VnR1JDSWhFUUNRQ0loRVFpWUJJQkVRaUlCSUJrUWlJUkVBa0FpSVJFSW1BU0FSRUlpQVNBWkVJaUVSQUpBSWlFUkNKZ0VnRVJISURLZU1YSmc5S1lxZ0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FJQUFBQjdHa090QUFBSGlVbEVRVlI0bk8zY29YSERBQkJGd1NqanFrVFZnSWthY0dHdXdVQlV2UVdHaENSanoyWDhkaXY0N00yUlc0NTkvUUNnNTNONkFBQXpCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpTHRNRFhtSzdQNlluZkR0djEra0pBRDl3QVFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQTFIdStnLzZWUDd4ci9sZnZwZ0greGdVQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZHWDZRSHp0dnRqZWdMQUFCY0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsRjlBTCtmWEVMeUI4M2FkbnZCOExnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWhham4yZDNnREFBQmNBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFRFVaWHJBUzJ6M3gvUUU0SzJjdCt2MGhPZHpBUUJFQ1FCQWxBQUFSQWtBUUpRQUFFUUpBRUNVQUFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVRSkFFQ1VBQUJFQ1FCQWxBQUFSQWtBUU5SeTdPdjBCZ0FHdUFBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlPb3lQZUFsdHZ0amVnTHdWczdiZFhyQzg3a0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnYWpuMmRYb0RBQU5jQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJYNHpxR2FhRWh3VGJBQUFBQUVsRlRrU3VRbUNDIiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FJQUFBQjdHa090QUFBSGcwbEVRVlI0bk8zY29YWERVQkJGd1NoSFZZbTZBUk0zb01KY2c0R29ld3NNRDFubjM1a0tIcnRueVc3WDQvZ0NvT2Q3ZWdBQU13UUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvdmJwQWF1NVBWL1RFMzY5ei92MEJPQnp1UUFBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSU1vNzZFbC9lTmY4VWUrbWdYL05CUUFRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVZnYwZ0xUYjh6VTlBZWh5QVFCRUNRQkFsQUFBUkFrQVFKUUFBRVFKQUVDVUFBQkVDUUJBbEFBQVJBa0FRSlFBQUVUNUJiUXl2NFpZelB1OFQwOVlpZ3NBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaXR1dHhURzhBWUlBTEFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnYXA4ZXNKcmI4elU5QVpiMVB1L1RFNWJpQWdDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdLanRlaHpUR3dBWTRBSUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnS2g5ZXNCcWJzL1g5QVJZMXZ1OFQwOVlpZ3NBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaXR1dHhURzhBWUlBTEFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0RxQjdrQkdhWVkrMHcyQUFBQUFFbEZUa1N1UW1DQyIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAibWFza2FibGUifV19">
+<meta name="theme-color" content="#2b2723">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAACM0lEQVR4nO3cMQ4BURRAUcSqtDagmQ1YmDUotPamV4jM/Ric05Nf3Ly8YvLWl2m3grk2n34A301AJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEi2Y/9ufzrP++H1eBj5Dt7FBCIREImASAREMniJvvNgNZ69brMoJhCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREMlrv0j02eHPM4FIBEQiIBIBkbx2iX6edfttxp4hMIFIBEQiIBIBkQiIREAkAiJZX6bdp9/AFzOBSAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREMvjEnUt1y+fEHQsiIBIBkQiIREAkAiIREIkTdyQmEImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREIkLZX/HhTIWREAkAiIREImASAREIiASF8pITCASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERHIDKeMXJg9KYqgAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ledger">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+  :root{
+    --paper:#efe9dc;
+    --ink:#2b2723;
+    --rule:#c9bfa8;
+    --clay:#b4553a;
+    --moss:#5c6b4f;
+    --card:#f7f3ea;
+  }
+  *{box-sizing:border-box; text-align:left;}
+  body{
+    margin:0;
+    font-family: 'Courier New', ui-monospace, monospace;
+    background: var(--paper);
+    color: var(--ink);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:40px 16px;
+  }
+  .sheet{
+    width:420px;
+    max-width:100%;
+    background: var(--card);
+    border:1px solid var(--rule);
+    box-shadow: 4px 4px 0 rgba(43,39,35,0.08);
+    padding:22px 24px 18px;
+  }
+  @media (max-width: 480px){
+    body{ padding:0; }
+    .sheet{ border:none; box-shadow:none; padding:14px 14px 12px; min-height:100vh; }
+    header h1{ font-size:16px; }
+    .float-row{ flex-wrap:wrap; row-gap:6px; }
+    .matrix-grid{ grid-template-columns:1fr; }
+    input[type=text], input[type=date], input[type=number]{ font-size:16px; } /* keeps mobile browsers from auto-zooming on focus */
+    #addTaskTriggerBtn{ font-size:13px; padding:6px 14px; }
+    .modal-box{ padding:14px; }
+    .toast{ left:16px; right:16px; transform:translateY(12px); width:auto; justify-content:space-between; }
+    li{ flex-wrap:wrap; }
+    #dueModal > div{ padding:14px; }
+    .toast.show{ transform:translateY(0); }
+  }
+  @media (max-width: 340px){
+    .sheet{ padding:10px 10px 10px; }
+    header h1{ font-size:14px; }
+    .count{ font-size:10.5px; }
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:10px;
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:18px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin:0;
+  }
+  .count{
+    font-size:12px;
+    color:var(--moss);
+  }
+  form{display:flex; gap:8px; margin-bottom:16px;}
+  input[type=text]{
+    flex:1;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--rule);
+    font-family:inherit;
+    font-size:14px;
+    color:var(--ink);
+    padding:6px 2px;
+    outline:none;
+  }
+  input[type=text]:focus{border-bottom-color:var(--clay);}
+  button{
+    font-family:inherit;
+    cursor:pointer;
+    border:1px solid var(--ink);
+    background:var(--ink);
+    color:var(--card);
+    padding:6px 12px;
+    font-size:13px;
+  }
+  button.ghost{
+    background:transparent;
+    color:var(--ink);
+  }
+  ul{list-style:none; margin:0; padding:0;}
+  li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:8px 0;
+    border-bottom:1px dashed var(--rule);
+    font-size:14px;
+  }
+  li .box{
+    width:14px; height:14px;
+    border:1px solid var(--ink);
+    margin-top:2px;
+    flex-shrink:0;
+    cursor:pointer;
+    position:relative;
+  }
+  li.done .box::after{
+    content:'✕';
+    position:absolute;
+    left:1px; top:-4px;
+    color:var(--clay);
+    font-size:14px;
+  }
+  li.done span{ text-decoration:line-through; color:#8a8175; }
+  li span{flex:1; cursor:pointer; word-break:break-word;}
+  li .del{
+    border:none; background:none; color:var(--rule);
+    font-size:14px; cursor:pointer; padding:0 4px;
+  }
+  li .del:hover{color:var(--clay);}
+
+  .day{ margin-bottom:6px; }
+  .day-head{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:var(--moss);
+    padding:10px 0 4px;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:2px;
+  }
+  .day-head.today{ color:var(--clay); }
+  .day-list{ min-height:6px; } /* so an empty day is still a drop target */
+  .day-list.drag-over{
+    background:rgba(180,85,58,0.08);
+    outline:1px dashed var(--clay);
+  }
+  li[draggable="true"]{ cursor:grab; }
+  li.dragging{ opacity:0.4; }
+  li.drag-over-top{ box-shadow: inset 0 2px 0 var(--clay); }
+  li.drag-over-bottom{ box-shadow: inset 0 -2px 0 var(--clay); }
+  .toast{
+    position:fixed; left:50%; bottom:20px; transform:translateX(-50%) translateY(12px);
+    display:flex; align-items:center; gap:12px;
+    background:var(--ink); color:var(--card); font-family:inherit; font-size:12px;
+    padding:9px 10px 9px 14px; border-radius:5px; box-shadow:2px 2px 0 rgba(43,39,35,0.25);
+    opacity:0; pointer-events:none; transition:opacity 0.15s, transform 0.15s;
+    z-index:60;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+  .toast button{
+    font-family:inherit; font-size:12px; font-weight:bold;
+    background:transparent; color:var(--card); border:1px solid var(--card);
+    padding:4px 10px; border-radius:3px; cursor:pointer;
+  }
+  .toast button:hover{ background:var(--card); color:var(--ink); }
+  .carry{
+    font-size:10px;
+    color:#fff;
+    background:var(--clay);
+    border-radius:8px;
+    padding:1px 6px;
+    margin-left:6px;
+    flex:none;
+    width:auto;
+  }
+  .edit-date{
+    border:none;
+    background:none;
+    color:var(--rule);
+    font-size:13px;
+    cursor:pointer;
+    padding:0 4px;
+    flex-shrink:0;
+  }
+  .edit-date:hover{ color:var(--moss); }
+  .due-tag{
+    font-family:inherit; border-radius:8px;
+    font-size:10px; padding:2px 7px; flex:none; white-space:nowrap; color:#fff;
+    background:var(--moss); display:none;
+  }
+  .due-tag.soon{ background:var(--clay); }
+  .due-tag.overdue{ background:#8a3a2a; }
+  .date-input{
+    font-family:inherit;
+    font-size:11px;
+    border:1px solid var(--rule);
+    background:var(--card);
+    color:var(--ink);
+    padding:1px 2px;
+    width:112px;
+    flex-shrink:0;
+  }
+  .move-btn{
+    font-family:inherit;
+    border:1px solid var(--moss);
+    background:transparent;
+    color:var(--moss);
+    font-size:10px;
+    padding:2px 6px;
+    cursor:pointer;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  .move-btn:hover{ background:var(--moss); color:var(--card); }
+  li{ user-select:none; } /* avoid text-selection fighting with drag */
+
+  .quad-tag{
+    font-family:inherit;
+    font-size:10px;
+    padding:2px 7px;
+    border-radius:8px;
+    cursor:pointer;
+    border:1px solid var(--rule);
+    color:var(--moss);
+    background:transparent;
+    flex:none;
+    white-space:nowrap;
+  }
+  .quad-tag.set{ color:#fff; border:none; }
+
+  .task-link{ color:var(--moss); text-decoration:underline; word-break:break-all; cursor:pointer; }
+  .task-link:hover{ color:var(--clay); }
+  .edit-text{
+    border:none; background:none; color:var(--rule);
+    font-size:13px; cursor:pointer; padding:0 4px; flex:none;
+  }
+  .edit-text:hover{ color:var(--moss); }
+  .text-edit-input{
+    font-family:inherit; font-size:inherit; flex:1;
+    background:var(--card); border:1px solid var(--clay); color:var(--ink);
+    padding:1px 4px; outline:none;
+  }
+  li span, .quad-item span, .unsorted-item span, .habit-title span,
+  .day-head, .quad-empty, h1, .count{
+    text-align:left;
+  }
+
+  .unsorted{ margin-bottom:16px; }
+  .unsorted-item{
+    display:flex; align-items:center; gap:8px;
+    padding:6px 0; border-bottom:1px dashed var(--rule); font-size:13px;
+  }
+  .quick-assign{ display:flex; gap:4px; }
+  .quick-assign button{
+    width:18px; height:18px; border-radius:50%;
+    border:none; padding:0; font-size:0; cursor:pointer;
+  }
+  .matrix-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .quad-box{ padding:10px; border-radius:4px; color:#fff; }
+  .quad-box h3{ margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:1px; }
+  .quad-empty{ font-size:11px; opacity:0.85; margin:0; }
+  .quad-item{
+    display:flex; align-items:center; gap:6px; font-size:12px;
+    background:rgba(255,255,255,0.16); padding:4px 6px; margin-bottom:4px; border-radius:3px;
+  }
+  .quad-item .box{ border-color:#fff; margin-top:0; }
+  .quad-item span{ flex:1; cursor:pointer; word-break:break-word; }
+  .quad-item button{ background:none; border:none; color:#fff; cursor:pointer; font-size:12px; padding:0 2px; flex:none; }
+
+  .float-row{
+    margin-bottom:14px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--rule);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .hint{font-size:11px; color:var(--moss);}
+  .empty{font-size:13px; color:#8a8175; padding:10px 0;}
+  .pop-controls{display:flex; align-items:center; gap:8px;}
+  .pop-controls.compact .ghost{ font-size:10px; padding:4px 8px; }
+  #addTaskTriggerBtn{
+    font-family:inherit; font-size:12px; font-weight:bold;
+    background:var(--ink); color:var(--card); border:1px solid var(--ink);
+    padding:5px 12px; border-radius:3px; cursor:pointer; margin-left:8px;
+  }
+  #addTaskTriggerBtn:hover{ background:var(--clay); border-color:var(--clay); }
+
+  .modal-overlay{
+    display:none; position:fixed; inset:0; background:rgba(43,39,35,0.45);
+    align-items:center; justify-content:center; z-index:50; padding:20px;
+  }
+  .modal-overlay.open{ display:flex; }
+  .modal-box{
+    background:var(--card); border:1px solid var(--ink); border-radius:6px;
+    box-shadow:2px 2px 0 rgba(43,39,35,0.2); padding:16px; width:100%; max-width:360px;
+  }
+  .modal-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:12px; font-size:13px; color:#8a8175;
+  }
+  .modal-close{
+    background:none; border:none; font-size:18px; line-height:1; cursor:pointer; color:var(--ink); padding:0 2px;
+  }
+  .modal-box form{ display:block; margin-bottom:0; }
+  .modal-box #input{ width:100%; margin-bottom:10px; }
+  .modal-box .habit-check{ margin-bottom:8px; }
+  .modal-box .day-picker{ margin:0 0 10px; }
+  .modal-actions{ display:flex; justify-content:flex-end; gap:8px; margin-top:4px; }
+  .float-row.no-border{ border-bottom:none; padding-bottom:0; }
+  #matrixToggle{ margin-left:auto; }
+  .list-toggle{ display:flex; border:1px solid var(--ink); }
+  .list-toggle .seg{
+    font-family:inherit; font-size:11px; padding:4px 9px;
+    border:none; background:transparent; color:var(--ink); cursor:pointer;
+  }
+  .list-toggle .seg + .seg{ border-left:1px solid var(--ink); }
+  .list-toggle .seg.active{ background:var(--ink); color:var(--card); }
+  .cat-tag{ font-size:12px; flex:none; }
+
+  .habit-check{
+    display:flex; align-items:center; gap:4px;
+    font-size:11px; color:var(--moss); white-space:nowrap;
+  }
+  .due-date-row{
+    display:flex; align-items:center; gap:8px;
+    font-size:11px; color:var(--moss);
+    margin:8px 0 10px;
+  }
+  .day-picker{
+    display:none; gap:8px; margin:-10px 0 14px; flex-wrap:wrap; align-items:center;
+  }
+  .day-chip-row{ display:flex; gap:4px; flex-wrap:wrap; }
+  .repeat-mode-toggle{ font-size:11px; }
+  .interval-row{
+    display:none; align-items:center; gap:6px; font-size:11px; color:var(--ink);
+  }
+  .day-chip{
+    font-family:inherit; font-size:11px; padding:3px 8px;
+    border:1px solid var(--rule); background:transparent; color:#8a8175; cursor:pointer;
+  }
+  .day-chip.active{ background:var(--moss); border-color:var(--moss); color:#fff; }
+  .habit-row{ background:rgba(92,107,79,0.06); }
+  .fixed-tag{
+    font-size:10px; padding:2px 7px; border-radius:8px; flex:none; white-space:nowrap; color:#fff;
+  }
+
+  .habit-nav{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:14px;
+  }
+  .habit-nav button{
+    background:transparent; border:none; color:var(--ink);
+    font-size:16px; cursor:pointer; padding:2px 8px;
+  }
+  .habit-nav button:disabled{ color:var(--rule); cursor:default; }
+  .habit-month-label{ font-size:12px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; }
+
+  .habit-card{ margin-bottom:18px; padding-bottom:14px; border-bottom:1px dashed var(--rule); }
+  .habit-head{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px; }
+  .habit-title{ display:flex; align-items:center; gap:8px; font-size:13px; }
+  .habit-stats{ font-size:11px; color:var(--moss); margin-top:6px; }
+  .habit-grid{ display:flex; flex-wrap:wrap; gap:3px; margin-top:4px; }
+  .hcell{
+    width:16px; height:16px; border-radius:3px;
+    font-size:0; cursor:pointer;
+    border:1px solid var(--rule); background:var(--paper); padding:0;
+  }
+  .hcell.l1{ background:#d7e4cd; border-color:#c7d9ba; }
+  .hcell.l2{ background:#a9c398; border-color:#9ab687; }
+  .hcell.l3{ background:#7d9c68; border-color:#729146; }
+  .hcell.l4{ background:var(--moss); border-color:var(--moss); }
+  .hcell.missed{ background:#e3beb6; border-color:#d9a89d; }
+  .hcell.future, .hcell.before{ background:transparent; border-style:dashed; cursor:default; }
+  .hcell.today{ outline:2px solid var(--clay); outline-offset:1px; }
+  .miss-badge{
+    font-size:10px; color:#fff; background:var(--clay);
+    border-radius:8px; padding:1px 6px; flex:none;
+  }
+  .habit-legend{
+    display:flex; align-items:center; gap:4px;
+    font-size:10px; color:var(--moss); margin-top:6px;
+  }
+  .habit-legend .hcell{
+    width:12px; height:12px; cursor:default; pointer-events:none;
+  }
+
+  .report-card{
+    background:var(--card); border:1px solid var(--rule);
+    padding:12px 14px; margin-bottom:12px;
+  }
+  .report-card.today{ border-color:var(--clay); }
+  .report-date{
+    font-size:12px; text-transform:uppercase; letter-spacing:1px;
+    color:var(--moss); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;
+  }
+  .report-card.today .report-date{ color:var(--clay); }
+  .report-live-tag{
+    font-size:9px; background:var(--clay); color:#fff; border-radius:8px; padding:1px 6px;
+  }
+  .report-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:8px 12px; margin-bottom:8px;
+  }
+  .report-metric .num{ font-size:18px; font-weight:bold; color:var(--ink); display:block; }
+  .report-metric .lbl{ font-size:10px; color:#8a8175; }
+  .report-oldest{
+    font-size:11px; color:var(--ink); background:rgba(92,107,79,0.08);
+    padding:6px 8px; border-radius:3px; margin-top:4px;
+  }
+  .report-oldest b{ color:var(--clay); }
+  .report-history-head{
+    font-size:11px; text-transform:uppercase; letter-spacing:1px;
+    color:var(--moss); margin:14px 0 6px; border-bottom:1px solid var(--rule); padding-bottom:4px;
+  }
+  .report-date.clickable{ cursor:pointer; }
+  .report-date.clickable:hover{ color:var(--clay); }
+
+  .report-toolbar{
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    gap:8px; margin-bottom:12px;
+  }
+  .report-goal-row{ font-size:11px; color:var(--ink); }
+  .report-goal-row label{ display:flex; align-items:center; gap:4px; flex-wrap:wrap; }
+  .goal-input{
+    width:44px; border:1px solid var(--rule); background:var(--card);
+    font-family:inherit; font-size:11px; padding:2px 4px; text-align:center;
+  }
+  .report-copy-btn{ font-size:11px; }
+
+  .report-note{
+    font-size:11px; color:var(--ink); background:rgba(92,107,79,0.08);
+    padding:8px 10px; border-radius:3px; margin-bottom:10px;
+  }
+  .report-note.warn{ background:rgba(180,69,58,0.1); color:#8a3428; }
+  .report-note.good{ background:rgba(92,107,79,0.15); }
+
+  .report-card.rollup{ border-color:var(--moss); }
+
+  .report-breakdown{
+    font-size:10px; color:#8a8175; margin-top:6px;
+  }
+
+  .progress-track{
+    background:var(--rule); border-radius:4px; height:6px; overflow:hidden; margin-top:3px;
+  }
+  .progress-fill{ background:var(--moss); height:100%; }
+  .progress-fill.over{ background:var(--clay); }
+
+  .report-chart-legend{
+    display:flex; gap:12px; font-size:10px; color:#8a8175; margin-top:4px;
+  }
+  .report-chart-legend i{
+    display:inline-block; width:8px; height:8px; margin-right:3px; border-radius:1px;
+  }
+
+  /* --- compact styling used only inside the floating PiP window --- */
+  body.pip-mode{
+    padding:0;
+    align-items:stretch;
+  }
+  body.pip-mode .sheet{
+    width:100%;
+    box-shadow:none;
+    border:none;
+    padding:10px 12px;
+    height:100vh;
+    overflow-y:auto;
+  }
+  body.pip-mode h1{font-size:13px;}
+  body.pip-mode form{margin-bottom:8px;}
+  body.pip-mode li{font-size:12px; padding:5px 0;}
+  body.pip-mode .pop-controls{display:none;}
+  body.pip-mode .pip-hide{display:none;}
+  body.pip-mode .float-row:first-of-type{ border-bottom:1px dashed var(--rule); padding-bottom:8px; margin-bottom:10px; justify-content:space-between; }
+
+  .min-btn{
+    display:none;
+    background:var(--ink);
+    border:1px solid var(--ink);
+    color:var(--card);
+    line-height:1;
+    padding:6px 12px;
+    font-family:inherit;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+    border-radius:4px;
+    cursor:pointer;
+    box-shadow:1px 1px 0 rgba(43,39,35,0.15);
+  }
+  .min-btn:hover{ background:var(--clay); border-color:var(--clay); }
+  body.pip-mode .min-btn{ display:inline-block; }
+
+  .mini-badge{
+    display:none;
+    width:100%; height:100%;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .mini-badge .dot{
+    width:34px; height:34px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px;
+    background:var(--card);
+  }
+  .mini-badge .num{
+    font-size:11px;
+    color:var(--moss);
+  }
+
+  body.pip-mode.mini .sheet{
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  body.pip-mode.mini .sheet > *:not(.mini-badge){ display:none !important; }
+  body.pip-mode.mini .mini-badge{ display:flex; }
+</style>
+</head>
+<body>
+  <div class="sheet" id="sheet">
+    <div class="float-row">
+      <button class="min-btn" id="minBtn" title="minimize to a small floating icon">– minimize</button>
+      <span class="list-toggle" id="contentToggle">
+        <button class="seg active" data-content="tasks" type="button">Tasks</button>
+        <button class="seg" data-content="habits" type="button">Habits</button>
+        <button class="seg" data-content="report" type="button">Report</button>
+      </span>
+      <span class="pop-controls compact" id="popControls">
+        <button class="ghost" id="popBtn" title="pop out — floats this over other browser tabs">⧉ pop out</button>
+        <span class="hint" id="pipSupport"></span>
+      </span>
+    </div>
+    <div class="float-row no-border pip-hide" id="dataRow">
+      <span class="hint" id="backupHint"></span>
+      <span class="pop-controls">
+        <button class="ghost" id="exportBtn" title="download all your data as a JSON file">⬇ export</button>
+        <button class="ghost" id="importBtn" title="restore data from a previously exported JSON file">⬆ import</button>
+        <button class="ghost" id="copyBackupBtn" title="copy all your data to the clipboard as JSON">📋 copy backup</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none;">
+      </span>
+    </div>
+
+    <div class="float-row no-border" id="subRow">
+      <span class="list-toggle" id="listToggle">
+        <button class="seg active" data-cat="work" type="button">Work</button>
+        <button class="seg" data-cat="personal" type="button">Personal</button>
+      </span>
+      <button class="ghost" id="matrixToggle">▦ matrix view</button>
+      <button type="button" id="addTaskTriggerBtn">+ add</button>
+    </div>
+
+    <header>
+      <h1>The ledger</h1>
+      <span style="display:flex; align-items:center; gap:8px;">
+        <span class="count" id="count">0 open</span>
+      </span>
+    </header>
+
+    <div class="mini-badge" id="miniBadge">
+      <div class="dot">✓</div>
+      <span class="num" id="miniNum">0</span>
+    </div>
+
+    <div class="toast" id="deleteToast">
+      <span id="toastMsg">Deleted</span>
+      <button type="button" id="toastUndo">Undo</button>
+    </div>
+
+    <div class="modal-overlay" id="addModalOverlay">
+      <div class="modal-box" id="addModalBox">
+        <div class="modal-head">
+          <span>Add to <b id="addModalCat">Work</b></span>
+          <button type="button" class="modal-close" id="addModalClose" title="close">×</button>
+        </div>
+        <form id="form">
+          <input type="text" id="input" placeholder="add a line…" autocomplete="off">
+          <label class="habit-check"><input type="checkbox" id="habitCheck"> 🔁 habit</label>
+
+          <label class="due-date-row" id="dueDateRow">
+            due date (optional)
+            <input type="date" id="dueDateInput" class="date-input" title="you'll get a reminder starting 24h before, and while it's overdue" style="width:auto;">
+          </label>
+
+          <div class="day-picker" id="dayPicker">
+            <span class="list-toggle repeat-mode-toggle" id="repeatModeToggle">
+              <button type="button" class="seg active" data-mode="weekdays">specific days</button>
+              <button type="button" class="seg" data-mode="interval">every N</button>
+            </span>
+            <span class="day-chip-row" id="dayChipRow">
+              <button type="button" class="day-chip active" data-day="0">Su</button>
+              <button type="button" class="day-chip active" data-day="1">Mo</button>
+              <button type="button" class="day-chip active" data-day="2">Tu</button>
+              <button type="button" class="day-chip active" data-day="3">We</button>
+              <button type="button" class="day-chip active" data-day="4">Th</button>
+              <button type="button" class="day-chip active" data-day="5">Fr</button>
+              <button type="button" class="day-chip active" data-day="6">Sa</button>
+            </span>
+            <span class="interval-row" id="intervalRow">
+              every
+              <input type="number" min="1" value="2" id="intervalN" class="goal-input" style="width:36px;">
+              <select id="intervalUnit" class="date-input" style="width:auto;">
+                <option value="day">day(s)</option>
+                <option value="week" selected>week(s)</option>
+                <option value="month">month(s)</option>
+              </select>
+            </span>
+          </div>
+
+          <div class="modal-actions">
+            <button type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="board"></div>
+  </div>
+
+  <div id="dueModal" style="display:none; position:fixed; inset:0; background:rgba(43,39,35,0.45); z-index:1000; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:var(--card); border:1px solid var(--rule); box-shadow:4px 4px 0 rgba(43,39,35,0.15); padding:18px; width:100%; max-width:380px; font-family:'Courier New', monospace;">
+      <div style="font-size:14px; font-weight:bold; margin-bottom:10px; color:var(--clay);">⏰ Due soon</div>
+      <ul id="dueModalList" style="list-style:none; padding:0; margin:0 0 14px; font-size:12.5px; line-height:1.6; color:var(--ink);"></ul>
+      <div style="display:flex; justify-content:flex-end;">
+        <button id="dueModalOk" type="button" style="font-size:12px; padding:5px 12px;">got it</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const KEY = 'ledger-todos-v1';
+  const boardEl = document.getElementById('board');
+  const form = document.getElementById('form');
+  const input = document.getElementById('input');
+  const countEl = document.getElementById('count');
+  const popBtn = document.getElementById('popBtn');
+  const pipSupport = document.getElementById('pipSupport');
+  const miniNumEl = document.getElementById('miniNum');
+
+  // ---- date helpers (all dates stored/compared as local YYYY-MM-DD strings) ----
+  function toKey(d){
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,'0');
+    const day = String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
+  function todayKey(){ return toKey(new Date()); }
+  function keyToDate(k){ const [y,m,d] = k.split('-').map(Number); return new Date(y, m-1, d); }
+  function diffDays(aKey, bKey){
+    const MS = 24*60*60*1000;
+    return Math.round((keyToDate(aKey) - keyToDate(bKey)) / MS);
+  }
+  function niceLabel(k){
+    const today = todayKey();
+    const yestKey = toKey(new Date(Date.now() - 86400000));
+    const pretty = keyToDate(k).toLocaleDateString(undefined, { month:'long', day:'numeric' });
+    if(k === today) return { text: `Today · ${pretty}`, isToday:true };
+    if(k === yestKey) return { text: `Yesterday · ${pretty}`, isToday:false };
+    return { text: pretty, isToday:false };
+  }
+  // ---- inline text editing (used for task text and habit names) ----
+  function makeEditBtn(onClick){
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'edit-text';
+    b.title = 'edit text';
+    b.textContent = '✎';
+    b.onclick = onClick;
+    return b;
+  }
+  // small clipboard-copy button, reused next to task/habit text
+  function makeCopyBtn(getText){
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'edit-text';
+    b.title = 'copy text';
+    b.textContent = '📋';
+    b.onclick = (e) => {
+      e.stopPropagation();
+      const text = getText();
+      const original = b.textContent;
+      const onDone = ok => { b.textContent = ok ? '✓' : '✗'; setTimeout(() => { b.textContent = original; }, 900); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(() => onDone(true)).catch(() => fallbackCopy(text, onDone));
+      } else {
+        fallbackCopy(text, onDone);
+      }
+    };
+    return b;
+  }
+  // renders text into a container, turning any http(s)/www URLs into real clickable
+  // links (target=_blank), while leaving the rest as plain text. span.textContent
+  // still reads back the full original string, so inline-editing keeps working.
+  const URL_RE = /((?:https?:\/\/|www\.)[^\s<]+[^\s<.,;:!?'")\]])/gi;
+  function renderLinkedText(container, text){
+    container.textContent = '';
+    let lastIndex = 0;
+    text.replace(URL_RE, (match, _g, offset) => {
+      if(offset > lastIndex) container.appendChild(document.createTextNode(text.slice(lastIndex, offset)));
+      const a = document.createElement('a');
+      a.href = /^https?:\/\//i.test(match) ? match : 'https://' + match;
+      a.textContent = match;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'task-link';
+      a.addEventListener('click', e => e.stopPropagation());
+      container.appendChild(a);
+      lastIndex = offset + match.length;
+      return match;
+    });
+    if(lastIndex < text.length) container.appendChild(document.createTextNode(text.slice(lastIndex)));
+  }
+  function startInlineEdit(span, onSave){
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'text-edit-input';
+    input.value = span.textContent;
+    span.replaceWith(input);
+    input.focus();
+    input.select();
+    let done = false;
+    function commit(){
+      if(done) return;
+      done = true;
+      const val = input.value.trim();
+      if(val) onSave(val);
+      save(); render();
+    }
+    input.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); commit(); }
+      else if(e.key === 'Escape'){ done = true; render(); }
+    });
+    input.addEventListener('blur', commit);
+  }
+
+  function newId(){
+    return (crypto.randomUUID) ? crypto.randomUUID() : 'id-' + Date.now() + '-' + Math.random().toString(36).slice(2);
+  }
+  function weekdayOf(dateKey){ return keyToDate(dateKey).getDay(); } // 0=Sun .. 6=Sat
+  // completions[k] is a 0-4 intensity level (github-style darkness). Older data
+  // stored a plain boolean `true` for "done" — treat that as the max level (4).
+  function levelOf(habit, dateKey){
+    const v = habit.completions[dateKey];
+    if(v === true) return 4;
+    if(typeof v === 'number') return v;
+    return 0;
+  }
+  // Pure recurrence-pattern check (ignores created/today bounds), so it can be
+  // reused for calendar rendering, streaks, and reports alike.
+  // Supports two recurrence styles, stored on h.repeat:
+  //   { mode:'weekdays', days:[0-6] }                  — repeats on given weekdays (old default)
+  //   { mode:'interval', unit:'day'|'week'|'month', n } — repeats every N days/weeks/months from createdDate
+  // Older saved habits have no h.repeat, only h.days — treated as weekdays mode.
+  function recurrenceMatches(h, dateKey){
+    const rep = h.repeat || { mode:'weekdays', days: h.days || [0,1,2,3,4,5,6] };
+    if(rep.mode === 'interval'){
+      const n = Math.max(1, rep.n || 1);
+      const created = keyToDate(h.createdDate);
+      const cur = keyToDate(dateKey);
+      if(rep.unit === 'day'){
+        const diff = diffDays(dateKey, h.createdDate);
+        return diff >= 0 && diff % n === 0;
+      }
+      if(rep.unit === 'week'){
+        const diff = diffDays(dateKey, h.createdDate);
+        return diff >= 0 && diff % (n * 7) === 0;
+      }
+      if(rep.unit === 'month'){
+        const monthDiff = (cur.getFullYear() - created.getFullYear()) * 12 + (cur.getMonth() - created.getMonth());
+        if(monthDiff < 0 || monthDiff % n !== 0) return false;
+        // land on the same day-of-month as creation, clamped to short months (e.g. the 31st -> the 28th/30th)
+        const lastDayOfTargetMonth = new Date(cur.getFullYear(), cur.getMonth() + 1, 0).getDate();
+        const targetDay = Math.min(created.getDate(), lastDayOfTargetMonth);
+        return cur.getDate() === targetDay;
+      }
+      return false;
+    }
+    return (rep.days || h.days || []).includes(weekdayOf(dateKey));
+  }
+  function repeatLabel(h){
+    const rep = h.repeat || { mode:'weekdays', days: h.days || [] };
+    if(rep.mode === 'interval'){
+      const n = rep.n || 1;
+      const unitLabel = { day:'day', week:'week', month:'month' }[rep.unit] || rep.unit;
+      return n === 1 ? `every ${unitLabel}` : `every ${n} ${unitLabel}s`;
+    }
+    const names = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    const days = rep.days || h.days || [];
+    if(days.length === 7) return 'every day';
+    return days.slice().sort().map(d => names[d]).join(' ') || 'never';
+  }
+  function habitScheduledOn(h, dateKey){
+    if(dateKey < h.createdDate) return false;   // habit didn't exist yet
+    if(dateKey > todayKey()) return false;      // never show future occurrences
+    return recurrenceMatches(h, dateKey);
+  }
+
+  // ---- Eisenhower matrix ----
+  const QUADRANTS = [
+    { key:'do',        label:'U / I',   color:'#5b8c3a' },
+    { key:'schedule',  label:'NU / I',  color:'#3d7ab5' },
+    { key:'delegate',  label:'U / NI',  color:'#b4453a' },
+    { key:'eliminate', label:'NU / NI', color:'#7a7a7a' },
+  ];
+  const CYCLE = [null, 'do', 'schedule', 'delegate', 'eliminate'];
+  function quadMeta(key){ return QUADRANTS.find(q => q.key === key); }
+  function nextQuadrant(cur){ return CYCLE[(CYCLE.indexOf(cur) + 1) % CYCLE.length]; }
+
+  let contentType = 'tasks';   // 'tasks' | 'habits' | 'report' — which tab is active
+  let taskViewMode = 'list';   // 'list' | 'matrix' — matrix is unified and reachable from either tab
+  let listCategory = 'work';
+  const contentToggle = document.getElementById('contentToggle');
+  const matrixToggle = document.getElementById('matrixToggle');
+  const listToggle = document.getElementById('listToggle');
+  const subRow = document.getElementById('subRow');
+
+  function syncSubRow(){
+    if(contentType === 'report'){
+      subRow.style.display = 'none';
+      form.style.display = 'none';
+      dayPicker.style.display = 'none';
+      return;
+    }
+    subRow.style.display = 'flex';
+    form.style.display = 'flex';
+    dayPicker.style.display = habitCheck.checked ? 'flex' : 'none';
+    // the matrix button is always reachable; the Work/Personal toggle only
+    // makes sense when we're not looking at the unified matrix
+    listToggle.style.display = taskViewMode === 'matrix' ? 'none' : 'flex';
+  }
+
+  contentToggle.querySelectorAll('.seg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      contentType = btn.dataset.content;
+      contentToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b === btn));
+      if(contentType === 'habits'){
+        // leaving matrix mode when switching to Habits keeps state predictable —
+        // hitting "matrix view" from either tab always starts fresh in matrix
+        taskViewMode = 'list';
+        matrixToggle.textContent = '▦ matrix view';
+      }
+      syncSubRow();
+      render();
+    });
+  });
+
+
+  matrixToggle.onclick = () => {
+    taskViewMode = taskViewMode === 'list' ? 'matrix' : 'list';
+    matrixToggle.textContent = taskViewMode === 'list' ? '▦ matrix view' : '☰ list view';
+    if(taskViewMode === 'matrix'){
+      // matrix is a unified Tasks view, so jump the Tasks/Habits toggle back to Tasks
+      contentType = 'tasks';
+      contentToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b.dataset.content === 'tasks'));
+    }
+    syncSubRow();
+    render();
+  };
+  listToggle.querySelectorAll('.seg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      listCategory = btn.dataset.cat;
+      listToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b === btn));
+      render();
+    });
+  });
+  const CAT_ICON = { work:'💼', personal:'🏡' };
+
+  // ---- data ----
+  // task:  { id, text, type:'task', done, doneDate, createdDate, date, quadrant, category }
+  // habit: { id, text, type:'habit', createdDate, category, days:[0-6], quadrant:'schedule', completions: {'YYYY-MM-DD':true} }
+  let todos = JSON.parse(localStorage.getItem(KEY) || '[]');
+
+  // migrate any older records saved before types/dates/ids/quadrants/repeat existed —
+  // reused after import too, since a backup could come from an older version.
+  function migrateTodos(list){
+    let migrated = false;
+    list.forEach(t => {
+      if(!t.id){ t.id = newId(); migrated = true; }
+      if(!t.type){ t.type = 'task'; migrated = true; }
+      if(!t.category){ t.category = 'work'; migrated = true; }
+
+      if(t.type === 'task'){
+        if(!t.date || !t.createdDate){
+          const k = todayKey();
+          t.date = t.date || k;
+          t.createdDate = t.createdDate || k;
+          migrated = true;
+        }
+        if(t.quadrant === undefined){ t.quadrant = null; migrated = true; }
+        if(t.done === undefined){ t.done = false; migrated = true; }
+        if(t.dueDate === undefined){ t.dueDate = null; migrated = true; }
+      } else if(t.type === 'habit'){
+        if(!t.completions){ t.completions = {}; migrated = true; }
+        if(!t.createdDate){ t.createdDate = todayKey(); migrated = true; }
+        if(!t.repeat){
+          if(!t.days || t.days.length === 0){ t.days = [0,1,2,3,4,5,6]; } // default: every day
+          t.repeat = { mode:'weekdays', days: t.days };
+          migrated = true;
+        }
+        if(!t.quadrant){ t.quadrant = 'schedule'; migrated = true; } // habits are fixed as Important/Not-Urgent
+      }
+    });
+    return migrated;
+  }
+  if(migrateTodos(todos)) localStorage.setItem(KEY, JSON.stringify(todos));
+
+  function save(){
+    try{
+      localStorage.setItem(KEY, JSON.stringify(todos));
+    }catch(e){
+      alert('Could not save — your browser storage may be full or unavailable. Use "export backup" to save your data elsewhere.');
+    }
+  }
+
+  // pulls any not-done task still sitting on a past date forward onto today —
+  // keeps createdDate untouched so the "carried over N days" badge (and the
+  // daily report's same-day-close math, which reads off createdDate) still
+  // reflect how old the task actually is
+  function autoCarryOverdueTasks(){
+    const today = todayKey();
+    let changed = false;
+    todos.forEach(t => {
+      if(t.type === 'task' && !t.done && t.date < today){
+        t.date = today;
+        changed = true;
+      }
+    });
+    if(changed) save();
+  }
+  autoCarryOverdueTasks();
+
+  // stamps/clears doneDate alongside the done flag, so the daily report can
+  // later tell same-day closes apart from tasks that lingered for a while
+  function markTaskDone(t, isDone){
+    t.done = isDone;
+    if(isDone) t.doneDate = todayKey();
+    else delete t.doneDate;
+  }
+
+  // moves the dragged task to sit immediately before/after a target task within
+  // the underlying todos array, so display order (which just filters that array)
+  // picks up the new position automatically
+  function reorderTaskRelativeTo(draggedId, targetId, before){
+    const draggedIdx = todos.findIndex(x => x.id === draggedId);
+    if(draggedIdx === -1) return;
+    const [dragged] = todos.splice(draggedIdx, 1);
+    const targetIdx = todos.findIndex(x => x.id === targetId);
+    if(targetIdx === -1){ todos.push(dragged); return; } // shouldn't happen, but don't lose the task
+    todos.splice(before ? targetIdx : targetIdx + 1, 0, dragged);
+  }
+
+  // ---- delete with a brief "Undo" window instead of a blocking confirm dialog ----
+  // Only the single most recent delete is undoable — deleting something else
+  // while a toast is showing just replaces it, which is fine for this app's scale.
+  const deleteToast = document.getElementById('deleteToast');
+  const toastMsg = document.getElementById('toastMsg');
+  const toastUndo = document.getElementById('toastUndo');
+  let pendingDelete = null; // { task, index, timeoutId }
+
+  function deleteWithUndo(task){
+    if(pendingDelete) clearTimeout(pendingDelete.timeoutId);
+    const idx = todos.findIndex(x => x.id === task.id);
+    if(idx === -1) return;
+    todos.splice(idx, 1);
+    save(); render();
+    toastMsg.textContent = (task.type === 'habit' ? 'Habit' : 'Task') + ' deleted';
+    deleteToast.classList.add('show');
+    const timeoutId = setTimeout(() => {
+      deleteToast.classList.remove('show');
+      pendingDelete = null;
+    }, 5000);
+    pendingDelete = { task, index: idx, timeoutId };
+  }
+  toastUndo.addEventListener('click', () => {
+    if(!pendingDelete) return;
+    clearTimeout(pendingDelete.timeoutId);
+    const { task, index } = pendingDelete;
+    todos.splice(Math.min(index, todos.length), 0, task);
+    pendingDelete = null;
+    deleteToast.classList.remove('show');
+    save(); render();
+  });
+
+  // count of everything still pending today — open tasks (Work + Personal) plus
+  // habits scheduled today that haven't been checked off yet. This is what the
+  // minimized floating badge shows, since "how much is left today" is the most
+  // useful glance-value regardless of which tab you were last on
+  function todayPendingCount(){
+    const today = todayKey();
+    const pendingTasks = todos.filter(t => t.type === 'task' && !t.done && t.date === today).length;
+    const pendingHabits = todos.filter(t => t.type === 'habit' && habitScheduledOn(t, today) && !t.completions[today]).length;
+    return pendingTasks + pendingHabits;
+  }
+
+  function render(){
+    boardEl.innerHTML = '';
+    miniNumEl.textContent = todayPendingCount();
+    if(taskViewMode === 'matrix'){
+      const open = todos.filter(t => t.type === 'task' && !t.done).length;
+      countEl.textContent = open + ' open';
+      renderMatrix();
+    } else if(contentType === 'habits'){
+      const habitsList = todos.filter(t => t.type === 'habit' && t.category === listCategory);
+      countEl.textContent = habitsList.length + ' habit' + (habitsList.length === 1 ? '' : 's');
+      renderHabits(habitsList);
+    } else if(contentType === 'report'){
+      countEl.textContent = 'daily reports';
+      renderReport();
+    } else {
+      const visible = todos.filter(t => t.type === 'task' && t.category === listCategory);
+      const open = visible.filter(t => !t.done).length;
+      countEl.textContent = open + ' open';
+      renderListView(visible);
+    }
+  }
+
+  function renderMatrix(){
+    const openTodos = todos.filter(t => t.type === 'task' && !t.done);
+    const unsorted = openTodos.filter(t => !t.quadrant);
+    const todayKeyVal = todayKey();
+    const habitTasksToday = todos.filter(t =>
+      t.type === 'habit' && habitScheduledOn(t, todayKeyVal) && !t.completions[todayKeyVal]
+    );
+
+    if(unsorted.length){
+      const wrap = document.createElement('div');
+      wrap.className = 'unsorted';
+      const h = document.createElement('div');
+      h.className = 'day-head';
+      h.textContent = 'Unsorted — tap a color to prioritize';
+      wrap.appendChild(h);
+      unsorted.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'unsorted-item';
+        const cat = document.createElement('span');
+        cat.className = 'cat-tag';
+        cat.textContent = CAT_ICON[t.category] || '';
+        cat.title = t.category;
+        const span = document.createElement('span');
+        renderLinkedText(span, t.text);
+        span.style.flex = '1';
+        const qa = document.createElement('div');
+        qa.className = 'quick-assign';
+        QUADRANTS.forEach(q => {
+          const b = document.createElement('button');
+          b.style.background = q.color;
+          b.title = q.label;
+          b.onclick = () => { t.quadrant = q.key; save(); render(); };
+          qa.appendChild(b);
+        });
+        const editBtn = makeEditBtn(() => startInlineEdit(span, v => { t.text = v; }));
+        const copyBtn = makeCopyBtn(() => t.text);
+        row.append(cat, span, editBtn, copyBtn, qa);
+        wrap.appendChild(row);
+      });
+      boardEl.appendChild(wrap);
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'matrix-grid';
+    QUADRANTS.forEach(q => {
+      const box = document.createElement('div');
+      box.className = 'quad-box';
+      box.style.background = q.color;
+      const h3 = document.createElement('h3');
+      h3.textContent = q.label;
+      box.appendChild(h3);
+
+      const items = openTodos.filter(t => t.quadrant === q.key);
+      const willHaveHabits = q.key === 'schedule' && habitTasksToday.length > 0;
+      if(items.length === 0 && !willHaveHabits){
+        const p = document.createElement('p');
+        p.className = 'quad-empty';
+        p.textContent = '—';
+        box.appendChild(p);
+      }
+      items.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'quad-item';
+        const cb = document.createElement('div');
+        cb.className = 'box';
+        cb.title = 'mark done';
+        cb.onclick = () => { markTaskDone(t, true); save(); render(); };
+        const cat = document.createElement('span');
+        cat.className = 'cat-tag';
+        cat.textContent = CAT_ICON[t.category] || '';
+        cat.title = t.category;
+        const span = document.createElement('span');
+        renderLinkedText(span, t.text);
+        span.onclick = cb.onclick;
+        const undo = document.createElement('button');
+        undo.textContent = '↺';
+        undo.title = 'send back to unsorted';
+        undo.onclick = () => { t.quadrant = null; save(); render(); };
+        const editBtn = makeEditBtn(() => startInlineEdit(span, v => { t.text = v; }));
+        const copyBtn = makeCopyBtn(() => t.text);
+        row.append(cb, cat, span, editBtn, copyBtn, undo);
+        box.appendChild(row);
+      });
+      grid.appendChild(box);
+      if(q.key === 'schedule' && habitTasksToday.length){
+        habitTasksToday.forEach(h => {
+          const row = document.createElement('div');
+          row.className = 'quad-item habit-row';
+          const cb = document.createElement('div');
+          cb.className = 'box';
+          cb.title = 'mark done for today';
+          cb.onclick = () => { h.completions[todayKeyVal] = true; save(); render(); };
+          const cat = document.createElement('span');
+          cat.className = 'cat-tag';
+          cat.textContent = CAT_ICON[h.category] || '';
+          cat.title = h.category;
+          const span = document.createElement('span');
+          renderLinkedText(span, '🔁 ' + h.text);
+          span.onclick = cb.onclick;
+          row.append(cb, cat, span);
+          box.appendChild(row);
+        });
+      }
+    });
+    boardEl.appendChild(grid);
+  }
+
+  function renderListView(list){
+    const today = todayKey();
+    const dateSet = new Set(list.map(t => t.date));
+    dateSet.add(today); // always keep a Today section as a drop target, even if empty
+    // Today always leads, then upcoming (future) dates soonest-first, then any
+    // past dates (only completed items linger here, since open ones auto-carry
+    // to today) most-recent-first at the bottom.
+    const future = [...dateSet].filter(d => d > today).sort();
+    const past = [...dateSet].filter(d => d < today).sort((a,b) => a < b ? 1 : -1);
+    const dates = [today, ...future, ...past];
+
+    dates.forEach(dateKey => {
+      const day = document.createElement('div');
+      day.className = 'day';
+
+      const label = niceLabel(dateKey);
+      const head = document.createElement('div');
+      head.className = 'day-head' + (label.isToday ? ' today' : '');
+      head.textContent = label.text;
+      day.appendChild(head);
+
+      const ul = document.createElement('ul');
+      ul.className = 'day-list';
+      ul.dataset.date = dateKey;
+
+      ul.addEventListener('dragover', e => { e.preventDefault(); ul.classList.add('drag-over'); });
+      ul.addEventListener('dragleave', () => ul.classList.remove('drag-over'));
+      ul.addEventListener('drop', e => {
+        e.preventDefault();
+        ul.classList.remove('drag-over');
+        const id = e.dataTransfer.getData('text/plain');
+        const t = todos.find(x => x.id === id);
+        if(t && t.date !== dateKey){
+          t.date = dateKey;
+          save(); render();
+        }
+      });
+
+      const items = list.filter(t => t.date === dateKey);
+      items.forEach(t => {
+        const li = document.createElement('li');
+        li.className = t.done ? 'done' : '';
+        li.draggable = true;
+        li.addEventListener('dragstart', e => {
+          e.dataTransfer.setData('text/plain', t.id);
+          li.classList.add('dragging');
+        });
+        li.addEventListener('dragend', () => {
+          li.classList.remove('dragging');
+          // in case a dragleave was missed (e.g. drag cancelled), clear any stray indicators
+          document.querySelectorAll('.drag-over-top, .drag-over-bottom').forEach(el =>
+            el.classList.remove('drag-over-top', 'drag-over-bottom'));
+        });
+        // reordering within (or into) this day: hovering the top half of a card
+        // queues an insert-before, the bottom half queues an insert-after
+        li.addEventListener('dragover', e => {
+          e.preventDefault();
+          e.stopPropagation(); // don't also trigger the day-level (whole-list) drop target
+          const rect = li.getBoundingClientRect();
+          const before = (e.clientY - rect.top) < rect.height / 2;
+          li.classList.toggle('drag-over-top', before);
+          li.classList.toggle('drag-over-bottom', !before);
+        });
+        li.addEventListener('dragleave', () => {
+          li.classList.remove('drag-over-top', 'drag-over-bottom');
+        });
+        li.addEventListener('drop', e => {
+          e.preventDefault();
+          e.stopPropagation();
+          li.classList.remove('drag-over-top', 'drag-over-bottom');
+          const draggedId = e.dataTransfer.getData('text/plain');
+          if(!draggedId || draggedId === t.id) return;
+          const dragged = todos.find(x => x.id === draggedId);
+          if(!dragged) return;
+          const rect = li.getBoundingClientRect();
+          const before = (e.clientY - rect.top) < rect.height / 2;
+          dragged.date = dateKey; // also handles dropping a card from a different day directly onto this one
+          reorderTaskRelativeTo(draggedId, t.id, before);
+          save(); render();
+        });
+
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.onclick = () => { markTaskDone(t, !t.done); save(); render(); };
+
+        const span = document.createElement('span');
+        renderLinkedText(span, t.text);
+        span.onclick = box.onclick;
+
+        li.append(box, span);
+
+        const editTextBtn = makeEditBtn(() => startInlineEdit(span, v => { t.text = v; }));
+        const copyBtn = makeCopyBtn(() => t.text);
+
+        const qBtn = document.createElement('button');
+        qBtn.type = 'button';
+        qBtn.className = 'quad-tag' + (t.quadrant ? ' set' : '');
+        if(t.quadrant){
+          const m = quadMeta(t.quadrant);
+          qBtn.style.background = m.color;
+          qBtn.textContent = m.label;
+        } else {
+          qBtn.textContent = '+ priority';
+        }
+        qBtn.title = 'click to cycle Eisenhower priority';
+        qBtn.onclick = () => { t.quadrant = nextQuadrant(t.quadrant); save(); render(); };
+        li.appendChild(qBtn);
+
+        const carried = diffDays(dateKey, t.createdDate);
+        if(carried > 0){
+          const badge = document.createElement('span');
+          badge.className = 'carry';
+          badge.title = `carried over ${carried} day${carried>1?'s':''}`;
+          badge.textContent = carried;
+          li.appendChild(badge);
+        }
+
+        // due date: click the ⏰ icon to set/change/clear a deadline, separate from
+        // the 📅 icon below (which just moves which day this card sits under). A
+        // colored label appears once one is set (clay = due today/tomorrow, dark
+        // red = overdue), and checkDueReminders() surfaces these in a popup too.
+        const dueBtn = document.createElement('button');
+        dueBtn.className = 'edit-date';
+        dueBtn.type = 'button';
+        dueBtn.textContent = '⏰';
+
+        const dueLabel = document.createElement('span');
+        dueLabel.className = 'due-tag';
+
+        const dueInput = document.createElement('input');
+        dueInput.type = 'date';
+        dueInput.className = 'date-input';
+        dueInput.value = t.dueDate || '';
+        dueInput.style.display = 'none';
+
+        function paintDue(){
+          if(t.dueDate){
+            const untilDue = diffDays(t.dueDate, todayKey());
+            dueLabel.classList.remove('soon', 'overdue');
+            if(untilDue < 0) dueLabel.classList.add('overdue');
+            else if(untilDue <= 1) dueLabel.classList.add('soon');
+            const pretty = keyToDate(t.dueDate).toLocaleDateString(undefined, { month:'short', day:'numeric' });
+            dueLabel.textContent = (untilDue < 0 ? 'overdue ' : 'due ') + pretty;
+            dueLabel.style.display = 'inline-block';
+            dueBtn.title = 'change or clear the due date';
+          } else {
+            dueLabel.style.display = 'none';
+            dueBtn.title = 'set a due date (reminds you starting 24h before)';
+          }
+        }
+        paintDue();
+
+        dueBtn.onclick = () => {
+          dueInput.style.display = 'inline-block';
+          dueBtn.style.display = 'none';
+          dueLabel.style.display = 'none';
+          if(dueInput.showPicker){ try{ dueInput.showPicker(); }catch(e){} }
+          dueInput.focus();
+        };
+        function commitDue(){
+          t.dueDate = dueInput.value || null;
+          dueInput.style.display = 'none';
+          dueBtn.style.display = 'inline-block';
+          paintDue();
+          save(); render();
+        }
+        dueInput.addEventListener('change', commitDue);
+        dueInput.addEventListener('blur', () => {
+          if(dueInput.value === (t.dueDate || '')){
+            dueInput.style.display = 'none';
+            dueBtn.style.display = 'inline-block';
+            if(t.dueDate) dueLabel.style.display = 'inline-block';
+          }
+        });
+        li.append(dueBtn, dueLabel, dueInput);
+
+        // manual date editor: click the calendar icon to correct which day
+        // this task actually belongs to (also resets its carry-over origin)
+        const editBtn = document.createElement('button');
+        editBtn.className = 'edit-date';
+        editBtn.type = 'button';
+        editBtn.title = 'set the date for this item';
+        editBtn.textContent = '📅';
+
+        const dateInput = document.createElement('input');
+        dateInput.type = 'date';
+        dateInput.className = 'date-input';
+        dateInput.value = t.date;
+        dateInput.style.display = 'none';
+
+        editBtn.onclick = () => {
+          dateInput.style.display = 'inline-block';
+          editBtn.style.display = 'none';
+          if(dateInput.showPicker){ try{ dateInput.showPicker(); }catch(e){} }
+          dateInput.focus();
+        };
+        function commit(){
+          if(dateInput.value){
+            t.date = dateInput.value;
+            t.createdDate = dateInput.value; // correcting the date resets the carry origin too
+            save(); render();
+          } else {
+            dateInput.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+          }
+        }
+        dateInput.addEventListener('change', commit);
+        dateInput.addEventListener('blur', () => {
+          // if nothing changed, just collapse back to the icon
+          if(dateInput.value === t.date){
+            dateInput.style.display = 'none';
+            editBtn.style.display = 'inline-block';
+          }
+        });
+
+        li.append(editBtn, dateInput);
+
+        if(dateKey !== today){
+          const moveBtn = document.createElement('button');
+          moveBtn.className = 'move-btn';
+          moveBtn.type = 'button';
+          moveBtn.textContent = '↑ today';
+          moveBtn.title = 'move to today (drag-and-drop alternative)';
+          moveBtn.onclick = () => { t.date = today; save(); render(); };
+          li.appendChild(moveBtn);
+        }
+
+        const del = document.createElement('button');
+        del.className = 'del';
+        del.textContent = '×';
+        del.onclick = () => deleteWithUndo(t);
+        li.append(editTextBtn, copyBtn, del);
+
+        ul.appendChild(li);
+      });
+
+      const habitItems = todos.filter(t => t.type === 'habit' && t.category === listCategory && habitScheduledOn(t, dateKey));
+      habitItems.forEach(h => {
+        const li = document.createElement('li');
+        li.className = 'habit-row' + (h.completions[dateKey] ? ' done' : '');
+
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.onclick = () => {
+          if(h.completions[dateKey]) delete h.completions[dateKey]; else h.completions[dateKey] = true;
+          save(); render();
+        };
+
+        const span = document.createElement('span');
+        renderLinkedText(span, '🔁 ' + h.text);
+        span.onclick = box.onclick;
+
+        const fixedTag = document.createElement('span');
+        fixedTag.className = 'fixed-tag';
+        const m = quadMeta(h.quadrant) || quadMeta('schedule');
+        fixedTag.style.background = m.color;
+        fixedTag.textContent = m.label;
+        fixedTag.title = 'habits are fixed as Important / Not Urgent';
+
+        li.append(box, span, fixedTag);
+        ul.appendChild(li);
+      });
+
+      if(items.length === 0 && habitItems.length === 0){
+        const empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = label.isToday ? 'Nothing yet — add a line, or drag one down from above.' : 'Nothing here.';
+        day.appendChild(empty);
+      }
+
+      day.appendChild(ul);
+      boardEl.appendChild(day);
+    });
+  }
+
+  function addMonths(date, n){ return new Date(date.getFullYear(), date.getMonth() + n, 1); }
+
+  function missStreak(habit, realToday){
+    let count = 0;
+    let cursor = keyToDate(realToday);
+    while(true){
+      const k = toKey(cursor);
+      if(k < habit.createdDate) break;               // habit didn't exist yet
+      if(k.slice(0,7) !== realToday.slice(0,7)) break; // never cross a month boundary — resets monthly
+      const scheduled = recurrenceMatches(habit, k);
+      if(scheduled){
+        if(habit.completions[k]) break; // found a completed scheduled day, streak ends here
+        count++;
+      }
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return count;
+  }
+
+  let habitMonthOffset = 0;
+  let editingDaysFor = null; // id of the habit currently showing its day-picker editor
+
+  // ---- daily efficiency reports ----
+  // Generated once per calendar day (at rollover, or on next open) and cached
+  // by date so past days stay stable even as new tasks/habits get added later.
+  const REPORTS_KEY = 'ledger-reports-v1';
+  const REPORT_SCHEMA_VERSION = 2;
+  let dailyReports = JSON.parse(localStorage.getItem(REPORTS_KEY) || '{}');
+  function saveReports(){
+    try{ localStorage.setItem(REPORTS_KEY, JSON.stringify(dailyReports)); }catch(e){ /* surfaced via save() calls elsewhere */ }
+  }
+
+  const GOALS_KEY = 'ledger-goals-v1';
+  let goals = JSON.parse(localStorage.getItem(GOALS_KEY) || '{}'); // { taskGoal, habitGoalPct }
+  function saveGoals(){
+    try{ localStorage.setItem(GOALS_KEY, JSON.stringify(goals)); }catch(e){ /* surfaced via save() calls elsewhere */ }
+  }
+
+  function firstDataDate(){
+    const dates = todos.map(t => t.createdDate).filter(Boolean);
+    return dates.length ? dates.reduce((min, d) => d < min ? d : min) : todayKey();
+  }
+
+  function computeDailyReport(dateKey){
+    const createdToday = todos.filter(t => t.type === 'task' && t.createdDate === dateKey);
+    const closedToday = todos.filter(t => t.type === 'task' && t.done && t.doneDate === dateKey);
+    const sameDayClosed = closedToday.filter(t => t.createdDate === dateKey).length;
+
+    let oldest = null;
+    const ages = [];
+    const quadrantBreakdown = {};
+    const categoryBreakdown = { work: 0, personal: 0 };
+    closedToday.forEach(t => {
+      const age = diffDays(dateKey, t.createdDate);
+      ages.push(age);
+      if(!oldest || age > oldest.age) oldest = { text: t.text, age };
+      const qk = t.quadrant || 'none';
+      quadrantBreakdown[qk] = (quadrantBreakdown[qk] || 0) + 1;
+      if(t.category === 'work' || t.category === 'personal') categoryBreakdown[t.category]++;
+    });
+    const avgAge = ages.length ? ages.reduce((a, b) => a + b, 0) / ages.length : null;
+    const sortedAges = [...ages].sort((a, b) => a - b);
+    const medianAge = sortedAges.length
+      ? (sortedAges.length % 2 === 1
+          ? sortedAges[(sortedAges.length - 1) / 2]
+          : (sortedAges[sortedAges.length / 2 - 1] + sortedAges[sortedAges.length / 2]) / 2)
+      : null;
+
+    const habitsScheduled = todos.filter(t => t.type === 'habit' && habitScheduledOn(t, dateKey));
+    const habitsCompleted = habitsScheduled.filter(t => levelOf(t, dateKey) > 0).length;
+
+    return {
+      schemaVersion: REPORT_SCHEMA_VERSION,
+      date: dateKey,
+      tasksCreated: createdToday.length,
+      tasksClosed: closedToday.length,
+      sameDayClosed,
+      oldest,
+      ages,
+      avgAge,
+      medianAge,
+      netBacklog: createdToday.length - closedToday.length,
+      quadrantBreakdown,
+      categoryBreakdown,
+      habitsScheduled: habitsScheduled.length,
+      habitsCompleted
+    };
+  }
+
+  // Lazily computes + caches a past day's report; upgrades any pre-existing
+  // cache entry that predates the current schema so older saves gain the new
+  // fields (turnaround, breakdowns, etc.) without losing their "finalized" feel —
+  // recomputation is deterministic off the same stored task/habit data.
+  function getReport(dateKey){
+    const cached = dailyReports[dateKey];
+    if(cached && cached.schemaVersion === REPORT_SCHEMA_VERSION) return cached;
+    const fresh = computeDailyReport(dateKey);
+    dailyReports[dateKey] = fresh;
+    saveReports();
+    return fresh;
+  }
+
+  // Reports for daysAgoStart..daysAgoEnd (0 = today), most-recent-first,
+  // stopping once we reach a date before any data exists.
+  function getReportsRange(daysAgoStart, daysAgoEnd){
+    const start = firstDataDate();
+    const today = todayKey();
+    const results = [];
+    for(let i = daysAgoStart; i <= daysAgoEnd; i++){
+      const cursor = new Date();
+      cursor.setDate(cursor.getDate() - i);
+      const k = toKey(cursor);
+      if(k < start) continue;
+      results.push(k === today ? computeDailyReport(k) : getReport(k));
+    }
+    return results;
+  }
+
+  function rollupReports(reports){
+    const acc = { tasksCreated: 0, tasksClosed: 0, sameDayClosed: 0, habitsScheduled: 0, habitsCompleted: 0, ages: [] };
+    reports.forEach(r => {
+      acc.tasksCreated += r.tasksCreated;
+      acc.tasksClosed += r.tasksClosed;
+      acc.sameDayClosed += r.sameDayClosed;
+      acc.habitsScheduled += r.habitsScheduled;
+      acc.habitsCompleted += r.habitsCompleted;
+      if(r.ages) acc.ages.push(...r.ages);
+    });
+    return acc;
+  }
+
+  function longestCurrentHabitStreak(){
+    const start = firstDataDate();
+    let streak = 0;
+    let cursor = new Date();
+    for(let i = 0; i < 400; i++){
+      const k = toKey(cursor);
+      if(k < start) break;
+      const r = k === todayKey() ? computeDailyReport(k) : getReport(k);
+      if(r.habitsScheduled > 0){
+        if(r.habitsCompleted === r.habitsScheduled) streak++;
+        else break;
+      }
+      cursor.setDate(cursor.getDate() - 1);
+    }
+    return streak;
+  }
+
+  function habitsTaskCorrelation(){
+    const range = getReportsRange(1, 30); // past 30 days, excluding today (still in progress)
+    const full = range.filter(r => r.habitsScheduled > 0 && r.habitsCompleted === r.habitsScheduled);
+    const partial = range.filter(r => r.habitsScheduled > 0 && r.habitsCompleted < r.habitsScheduled);
+    if(full.length < 3 || partial.length < 3) return null; // not enough of a sample either way
+    const avg = arr => arr.reduce((s, r) => s + r.tasksClosed, 0) / arr.length;
+    const fullAvg = avg(full), partialAvg = avg(partial);
+    if(partialAvg <= 0) return null;
+    return { fullAvg, partialAvg, diffPct: Math.round(((fullAvg - partialAvg) / partialAvg) * 100) };
+  }
+
+  function bestWeekday(){
+    const range = getReportsRange(1, 90);
+    if(range.length < 7) return null;
+    const sums = [0,0,0,0,0,0,0], counts = [0,0,0,0,0,0,0];
+    range.forEach(r => { const wd = weekdayOf(r.date); sums[wd] += r.tasksClosed; counts[wd]++; });
+    let bestIdx = -1, bestAvg = -1;
+    for(let i = 0; i < 7; i++){
+      if(counts[i] > 0){
+        const avg = sums[i] / counts[i];
+        if(avg > bestAvg){ bestAvg = avg; bestIdx = i; }
+      }
+    }
+    if(bestIdx < 0) return null;
+    const names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    return { day: names[bestIdx], avg: bestAvg };
+  }
+
+  function oldestOpenTask(){
+    const today = todayKey();
+    let oldest = null;
+    todos.forEach(t => {
+      if(t.type === 'task' && !t.done){
+        const age = diffDays(today, t.createdDate);
+        if(!oldest || age > oldest.age) oldest = { text: t.text, age };
+      }
+    });
+    return oldest;
+  }
+
+  function fallbackCopy(text, cb){
+    try{
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      cb(ok);
+    }catch(e){ cb(false); }
+  }
+
+  // jumps to the Tasks list view and scrolls the given day's group into view
+  // (best-effort: the group only exists if the currently-selected Work/Personal
+  // category has an item on that date)
+  function jumpToDate(dateKey){
+    contentType = 'tasks';
+    taskViewMode = 'list';
+    contentToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b.dataset.content === 'tasks'));
+    matrixToggle.textContent = '▦ matrix view';
+    syncSubRow();
+    render();
+    requestAnimationFrame(() => {
+      const el = boardEl.querySelector(`ul.day-list[data-date="${dateKey}"]`);
+      if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function progressBar(value, max, overOk){
+    const track = document.createElement('div');
+    track.className = 'progress-track';
+    const fill = document.createElement('div');
+    const pct = max > 0 ? Math.min(100, Math.round((value / max) * 100)) : 0;
+    fill.className = 'progress-fill' + (overOk && value >= max ? '' : '');
+    fill.style.width = pct + '%';
+    track.appendChild(fill);
+    return track;
+  }
+
+  function renderReport(){
+    const wrap = document.createElement('div');
+
+    // --- toolbar: daily goals + copy summary ---
+    const toolbar = document.createElement('div');
+    toolbar.className = 'report-toolbar';
+    const goalRow = document.createElement('div');
+    goalRow.className = 'report-goal-row';
+    const goalLabel = document.createElement('label');
+    goalLabel.innerHTML = '🎯 Daily goal — close ';
+    const taskGoalInput = document.createElement('input');
+    taskGoalInput.type = 'number'; taskGoalInput.min = '0'; taskGoalInput.className = 'goal-input';
+    taskGoalInput.placeholder = '–'; taskGoalInput.value = goals.taskGoal ?? '';
+    goalLabel.appendChild(taskGoalInput);
+    goalLabel.appendChild(document.createTextNode(' tasks, finish '));
+    const habitGoalInput = document.createElement('input');
+    habitGoalInput.type = 'number'; habitGoalInput.min = '0'; habitGoalInput.max = '100'; habitGoalInput.className = 'goal-input';
+    habitGoalInput.placeholder = '–'; habitGoalInput.value = goals.habitGoalPct ?? '';
+    goalLabel.appendChild(habitGoalInput);
+    goalLabel.appendChild(document.createTextNode('% of habits'));
+    goalRow.appendChild(goalLabel);
+    toolbar.appendChild(goalRow);
+    taskGoalInput.addEventListener('change', () => {
+      goals.taskGoal = taskGoalInput.value === '' ? null : Number(taskGoalInput.value);
+      saveGoals(); render();
+    });
+    habitGoalInput.addEventListener('change', () => {
+      goals.habitGoalPct = habitGoalInput.value === '' ? null : Number(habitGoalInput.value);
+      saveGoals(); render();
+    });
+
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.className = 'ghost report-copy-btn';
+    copyBtn.textContent = '📋 copy weekly summary';
+    toolbar.appendChild(copyBtn);
+    wrap.appendChild(toolbar);
+
+    // --- live "today" card ---
+    const todayReport = computeDailyReport(todayKey());
+    wrap.appendChild(reportCard(todayReport, true));
+
+    // --- oldest currently-open task nudge ---
+    const oldestOpen = oldestOpenTask();
+    if(oldestOpen && oldestOpen.age >= 3){
+      const nudge = document.createElement('div');
+      nudge.className = 'report-note warn';
+      nudge.innerHTML = `⏳ Oldest <u>open</u> task right now: <b>${oldestOpen.age}d</b> old — "${escapeHtml(oldestOpen.text)}"`;
+      wrap.appendChild(nudge);
+    }
+
+    // --- this week / week-over-week ---
+    const thisWeek = getReportsRange(0, 6);
+    const lastWeek = getReportsRange(7, 13);
+    const thisWeekRollup = rollupReports(thisWeek);
+    wrap.appendChild(rollupCard('This week', thisWeekRollup));
+
+    if(lastWeek.length >= 5){
+      const lastWeekRollup = rollupReports(lastWeek);
+      let text = '';
+      if(lastWeekRollup.tasksClosed > 0){
+        const pct = Math.round(((thisWeekRollup.tasksClosed - lastWeekRollup.tasksClosed) / lastWeekRollup.tasksClosed) * 100);
+        const dir = pct >= 0 ? 'more' : 'fewer';
+        text = `${Math.abs(pct)}% ${dir} tasks closed than last week (${thisWeekRollup.tasksClosed} vs ${lastWeekRollup.tasksClosed}).`;
+      } else if(thisWeekRollup.tasksClosed > 0){
+        text = `Closed ${thisWeekRollup.tasksClosed} tasks this week — no closes last week to compare against.`;
+      }
+      if(text){
+        const wow = document.createElement('div');
+        wow.className = 'report-note';
+        wow.textContent = text;
+        wrap.appendChild(wow);
+      }
+    }
+
+    // --- this month rollup ---
+    const thisMonth = getReportsRange(0, 29);
+    if(thisMonth.length >= 7){
+      wrap.appendChild(rollupCard('This month', rollupReports(thisMonth)));
+    }
+
+    // --- 14-day trend chart ---
+    const trendReports = getReportsRange(0, 13).reverse(); // oldest -> newest, left to right
+    if(trendReports.length >= 3){
+      wrap.appendChild(trendChart(trendReports));
+    }
+
+    // --- habit streak + habits/tasks correlation + best weekday ---
+    const streak = longestCurrentHabitStreak();
+    if(streak > 0){
+      const s = document.createElement('div');
+      s.className = 'report-note good';
+      s.textContent = `🔥 ${streak}-day streak of hitting every scheduled habit.`;
+      wrap.appendChild(s);
+    }
+    const corr = habitsTaskCorrelation();
+    if(corr){
+      const c = document.createElement('div');
+      c.className = 'report-note';
+      const dir = corr.diffPct >= 0 ? 'more' : 'fewer';
+      c.textContent = `On days you finish all your habits, you close ${Math.abs(corr.diffPct)}% ${dir} tasks on average (${corr.fullAvg.toFixed(1)} vs ${corr.partialAvg.toFixed(1)}).`;
+      wrap.appendChild(c);
+    }
+    const best = bestWeekday();
+    if(best){
+      const b = document.createElement('div');
+      b.className = 'report-note';
+      b.textContent = `📅 Your most productive day tends to be ${best.day} (avg ${best.avg.toFixed(1)} tasks closed).`;
+      wrap.appendChild(b);
+    }
+
+    // --- history list ---
+    const pastReports = getReportsRange(1, 14);
+    if(pastReports.length){
+      const head = document.createElement('div');
+      head.className = 'report-history-head';
+      head.textContent = 'Past days';
+      wrap.appendChild(head);
+      pastReports.forEach(r => wrap.appendChild(reportCard(r, false)));
+    }
+
+    boardEl.appendChild(wrap);
+
+    copyBtn.onclick = () => {
+      const habitPct = thisWeekRollup.habitsScheduled > 0
+        ? Math.round((thisWeekRollup.habitsCompleted / thisWeekRollup.habitsScheduled) * 100) : 0;
+      const lines = [
+        `Weekly summary (${todayKey()})`,
+        `Tasks closed: ${thisWeekRollup.tasksClosed} (of ${thisWeekRollup.tasksCreated} created)`,
+        `Closed same-day: ${thisWeekRollup.sameDayClosed}`,
+        `Habits followed: ${habitPct}%`,
+      ];
+      if(streak > 0) lines.push(`Current full-habit streak: ${streak} day(s)`);
+      if(best) lines.push(`Most productive day: ${best.day}`);
+      const text = lines.join('\n');
+      const showFeedback = (ok) => {
+        const original = copyBtn.textContent;
+        copyBtn.textContent = ok ? '✓ copied' : '✗ copy failed';
+        setTimeout(() => { copyBtn.textContent = original; }, 1500);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(() => showFeedback(true)).catch(() => fallbackCopy(text, showFeedback));
+      } else {
+        fallbackCopy(text, showFeedback);
+      }
+    };
+  }
+
+  function rollupCard(title, roll){
+    const card = document.createElement('div');
+    card.className = 'report-card rollup';
+    const head = document.createElement('div');
+    head.className = 'report-date';
+    head.innerHTML = `<span>${title}</span>`;
+    card.appendChild(head);
+
+    const grid = document.createElement('div');
+    grid.className = 'report-grid';
+    const habitPct = roll.habitsScheduled > 0 ? Math.round((roll.habitsCompleted / roll.habitsScheduled) * 100) : null;
+    const avgAge = roll.ages.length ? (roll.ages.reduce((a, b) => a + b, 0) / roll.ages.length).toFixed(1) : '–';
+    const metrics = [
+      [roll.tasksClosed, `tasks closed (of ${roll.tasksCreated} created)`],
+      [roll.sameDayClosed, 'closed same-day as created'],
+      [habitPct !== null ? habitPct + '%' : '–', 'habits followed'],
+      [avgAge, 'avg turnaround (days)'],
+    ];
+    metrics.forEach(([num, lbl]) => {
+      const m = document.createElement('div');
+      m.className = 'report-metric';
+      const n = document.createElement('span'); n.className = 'num'; n.textContent = num;
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = lbl;
+      m.append(n, l);
+      grid.appendChild(m);
+    });
+    card.appendChild(grid);
+    return card;
+  }
+
+  function trendChart(reports){
+    const card = document.createElement('div');
+    card.className = 'report-card';
+    const head = document.createElement('div');
+    head.className = 'report-date';
+    head.innerHTML = '<span>Last 14 days — tasks closed</span>';
+    card.appendChild(head);
+
+    const maxVal = Math.max(1, ...reports.map(r => r.tasksClosed));
+    const w = 300, h = 80, barW = w / reports.length;
+    let bars = '';
+    reports.forEach((r, i) => {
+      const totalH = (r.tasksClosed / maxVal) * (h - 14);
+      const sameH = (r.sameDayClosed / maxVal) * (h - 14);
+      const x = i * barW + 2;
+      const bw = Math.max(1, barW - 4);
+      const yTotal = h - 14 - totalH;
+      const ySame = h - 14 - sameH;
+      bars += `<rect x="${x}" y="${yTotal}" width="${bw}" height="${totalH}" fill="#c7d9ba"></rect>`;
+      bars += `<rect x="${x}" y="${ySame}" width="${bw}" height="${sameH}" fill="#5c6b4f"></rect>`;
+      const day = keyToDate(r.date).getDate();
+      bars += `<text x="${x + bw / 2}" y="${h - 2}" font-size="7" text-anchor="middle" fill="#8a8175">${day}</text>`;
+    });
+    const svgWrap = document.createElement('div');
+    svgWrap.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="${h}" xmlns="http://www.w3.org/2000/svg">${bars}</svg>`;
+    card.appendChild(svgWrap);
+
+    const legend = document.createElement('div');
+    legend.className = 'report-chart-legend';
+    legend.innerHTML = `<span><i style="background:#5c6b4f"></i>same-day</span><span><i style="background:#c7d9ba"></i>closed later</span>`;
+    card.appendChild(legend);
+
+    return card;
+  }
+
+  function reportCard(r, isLive){
+    const card = document.createElement('div');
+    card.className = 'report-card' + (isLive ? ' today' : '');
+
+    const dateRow = document.createElement('div');
+    dateRow.className = 'report-date' + (isLive ? '' : ' clickable');
+    const label = document.createElement('span');
+    label.textContent = r.date === todayKey() ? `Today · ${r.date}` : r.date;
+    dateRow.appendChild(label);
+    if(isLive){
+      const tag = document.createElement('span');
+      tag.className = 'report-live-tag';
+      tag.textContent = 'so far';
+      dateRow.appendChild(tag);
+    } else {
+      dateRow.title = 'jump to this day in Tasks';
+      dateRow.addEventListener('click', () => jumpToDate(r.date));
+    }
+    card.appendChild(dateRow);
+
+    const grid = document.createElement('div');
+    grid.className = 'report-grid';
+    const metrics = [
+      [r.sameDayClosed, 'closed same-day as created'],
+      [r.tasksClosed, `tasks closed (of ${r.tasksCreated} created)`],
+      [`${r.habitsCompleted}/${r.habitsScheduled}`, 'habits followed'],
+      [r.netBacklog > 0 ? `+${r.netBacklog}` : r.netBacklog, 'net backlog change'],
+    ];
+    metrics.forEach(([num, lbl]) => {
+      const m = document.createElement('div');
+      m.className = 'report-metric';
+      const n = document.createElement('span'); n.className = 'num'; n.textContent = num;
+      const l = document.createElement('span'); l.className = 'lbl'; l.textContent = lbl;
+      m.append(n, l);
+      grid.appendChild(m);
+    });
+    card.appendChild(grid);
+
+    // goal progress bars, only on the live "today" card and only if goals are set
+    if(isLive && (goals.taskGoal || goals.habitGoalPct)){
+      if(goals.taskGoal){
+        const row = document.createElement('div');
+        row.style.fontSize = '10px'; row.style.color = '#8a8175'; row.style.marginTop = '6px';
+        row.textContent = `Tasks closed: ${r.tasksClosed} / ${goals.taskGoal} goal`;
+        card.appendChild(row);
+        card.appendChild(progressBar(r.tasksClosed, goals.taskGoal, true));
+      }
+      if(goals.habitGoalPct){
+        const habitPct = r.habitsScheduled > 0 ? Math.round((r.habitsCompleted / r.habitsScheduled) * 100) : 0;
+        const row = document.createElement('div');
+        row.style.fontSize = '10px'; row.style.color = '#8a8175'; row.style.marginTop = '6px';
+        row.textContent = `Habits: ${habitPct}% / ${goals.habitGoalPct}% goal`;
+        card.appendChild(row);
+        card.appendChild(progressBar(habitPct, goals.habitGoalPct, true));
+      }
+    }
+
+    if(r.oldest){
+      const o = document.createElement('div');
+      o.className = 'report-oldest';
+      let extra = '';
+      if(r.avgAge !== null && r.avgAge !== undefined) extra = ` · avg turnaround ${r.avgAge.toFixed(1)}d, median ${r.medianAge.toFixed(1)}d`;
+      o.innerHTML = `Oldest task closed: <b>${r.oldest.age}d</b> old — "${escapeHtml(r.oldest.text)}"${extra}`;
+      card.appendChild(o);
+    }
+
+    if(r.tasksClosed > 0 && r.quadrantBreakdown){
+      const bd = document.createElement('div');
+      bd.className = 'report-breakdown';
+      const qLabels = { do: 'Do', schedule: 'Schedule', delegate: 'Delegate', eliminate: 'Eliminate', none: 'unsorted' };
+      const qParts = Object.entries(r.quadrantBreakdown)
+        .filter(([, c]) => c > 0)
+        .map(([k, c]) => `${qLabels[k] || k} ${c}`)
+        .join(' · ');
+      const catParts = Object.entries(r.categoryBreakdown || {})
+        .filter(([, c]) => c > 0)
+        .map(([k, c]) => `${k} ${c}`)
+        .join(' · ');
+      bd.textContent = [qParts, catParts].filter(Boolean).join('  |  ');
+      if(bd.textContent) card.appendChild(bd);
+    }
+
+    return card;
+  }
+
+  function escapeHtml(s){
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+
+  function renderHabits(list){
+    const base = addMonths(new Date(), habitMonthOffset);
+    const y = base.getFullYear(), m = base.getMonth();
+    const totalDays = new Date(y, m + 1, 0).getDate();
+    const isCurrentMonth = habitMonthOffset === 0;
+    const realToday = todayKey();
+
+    const nav = document.createElement('div');
+    nav.className = 'habit-nav';
+    const prev = document.createElement('button');
+    prev.type = 'button'; prev.textContent = '‹';
+    prev.onclick = () => { habitMonthOffset--; render(); };
+    const label = document.createElement('span');
+    label.className = 'habit-month-label';
+    label.textContent = base.toLocaleDateString(undefined, { month:'long', year:'numeric' });
+    const next = document.createElement('button');
+    next.type = 'button'; next.textContent = '›';
+    next.disabled = habitMonthOffset >= 0; // don't navigate into the future
+    next.onclick = () => { if(habitMonthOffset < 0){ habitMonthOffset++; render(); } };
+    nav.append(prev, label, next);
+    boardEl.appendChild(nav);
+
+    if(list.length === 0){
+      const p = document.createElement('p');
+      p.className = 'empty';
+      p.textContent = 'No recurring habits yet — check "🔁 habit" when adding a line.';
+      boardEl.appendChild(p);
+      return;
+    }
+
+    list.forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'habit-card';
+
+      const head = document.createElement('div');
+      head.className = 'habit-head';
+      const title = document.createElement('div');
+      title.className = 'habit-title';
+      const span = document.createElement('span');
+      renderLinkedText(span, t.text);
+      title.appendChild(span);
+
+      const repLbl = document.createElement('span');
+      repLbl.style.fontSize = '10px';
+      repLbl.style.color = '#8a8175';
+      repLbl.textContent = '(' + repeatLabel(t) + ')';
+      title.appendChild(repLbl);
+
+      if(isCurrentMonth){
+        const streak = missStreak(t, realToday);
+        if(streak > 0){
+          const badge = document.createElement('span');
+          badge.className = 'miss-badge';
+          badge.textContent = `missed ${streak}d`;
+          title.appendChild(badge);
+        }
+      }
+      head.appendChild(title);
+
+      const actions = document.createElement('div');
+      actions.style.display = 'flex';
+      actions.style.alignItems = 'center';
+      actions.style.gap = '6px';
+      actions.style.flexShrink = '0';
+
+      const daysBtn = document.createElement('button');
+      daysBtn.type = 'button';
+      daysBtn.className = 'edit-text';
+      daysBtn.title = 'edit which days this habit repeats on';
+      daysBtn.textContent = editingDaysFor === t.id ? '✓ done' : '📅 days';
+      daysBtn.onclick = () => { editingDaysFor = editingDaysFor === t.id ? null : t.id; render(); };
+      actions.appendChild(daysBtn);
+
+      const editBtn = makeEditBtn(() => startInlineEdit(span, v => { t.text = v; }));
+      actions.appendChild(editBtn);
+
+      const del = document.createElement('button');
+      del.className = 'del';
+      del.textContent = '×';
+      del.onclick = () => deleteWithUndo(t);
+      actions.appendChild(del);
+
+      head.appendChild(actions);
+      card.appendChild(head);
+
+      if(editingDaysFor === t.id){
+        const rep = t.repeat || { mode:'weekdays', days: t.days || [] };
+        const picker = document.createElement('div');
+        picker.className = 'day-picker';
+        picker.style.display = 'flex';
+        picker.style.margin = '-4px 0 12px';
+
+        const modeToggle = document.createElement('span');
+        modeToggle.className = 'list-toggle repeat-mode-toggle';
+        ['weekdays', 'interval'].forEach(mode => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'seg' + (rep.mode === mode ? ' active' : '');
+          b.textContent = mode === 'weekdays' ? 'specific days' : 'every N';
+          b.onclick = () => {
+            t.repeat = mode === 'weekdays'
+              ? { mode:'weekdays', days: (t.repeat && t.repeat.days) || t.days || [0,1,2,3,4,5,6] }
+              : { mode:'interval', unit: 'week', n: 2 };
+            if(t.repeat.mode === 'weekdays') t.days = t.repeat.days;
+            save(); render();
+          };
+          modeToggle.appendChild(b);
+        });
+        picker.appendChild(modeToggle);
+
+        if(rep.mode === 'interval'){
+          const row = document.createElement('span');
+          row.className = 'interval-row';
+          row.style.display = 'flex';
+          row.append('every ');
+          const n = document.createElement('input');
+          n.type = 'number'; n.min = '1'; n.className = 'goal-input'; n.style.width = '36px';
+          n.value = rep.n || 1;
+          n.onchange = () => { t.repeat.n = Math.max(1, Number(n.value) || 1); save(); render(); };
+          row.appendChild(n);
+          const unit = document.createElement('select');
+          unit.className = 'date-input'; unit.style.width = 'auto';
+          [['day','day(s)'], ['week','week(s)'], ['month','month(s)']].forEach(([v, lbl]) => {
+            const opt = document.createElement('option');
+            opt.value = v; opt.textContent = lbl;
+            if(rep.unit === v) opt.selected = true;
+            unit.appendChild(opt);
+          });
+          unit.onchange = () => { t.repeat.unit = unit.value; save(); render(); };
+          row.appendChild(unit);
+          picker.appendChild(row);
+        } else {
+          const names = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+          const chipRow = document.createElement('span');
+          chipRow.className = 'day-chip-row';
+          names.forEach((lbl, idx) => {
+            const chip = document.createElement('button');
+            chip.type = 'button';
+            const days = t.repeat.days || [];
+            chip.className = 'day-chip' + (days.includes(idx) ? ' active' : '');
+            chip.textContent = lbl;
+            chip.onclick = () => {
+              const has = days.includes(idx);
+              if(has && days.length === 1) return; // keep at least one scheduled day
+              t.repeat.days = has ? days.filter(d => d !== idx) : [...days, idx].sort();
+              t.days = t.repeat.days;
+              save(); render();
+            };
+            chipRow.appendChild(chip);
+          });
+          picker.appendChild(chipRow);
+        }
+        card.appendChild(picker);
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'habit-grid';
+      let doneCount = 0;
+      let trackedDays = 0;
+      for(let d = 1; d <= totalDays; d++){
+        const k = `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const cell = document.createElement('button');
+        cell.type = 'button';
+        cell.className = 'hcell';
+        const isFuture = k > realToday;
+        const beforeStart = k < t.createdDate;
+        const isScheduled = recurrenceMatches(t, k);
+        const lvl = levelOf(t, k);
+
+        if(lvl > 0){
+          cell.classList.add('l' + lvl);
+          cell.title = `${k} — level ${lvl}/4 (click to change)`;
+          doneCount++;
+        }
+        else if(isFuture || beforeStart || !isScheduled){
+          cell.classList.add(isFuture ? 'future' : 'before');
+          cell.title = k;
+        }
+        else {
+          cell.classList.add('missed');
+          cell.title = `${k} — not done (click to log)`;
+        }
+
+        if(k === realToday) cell.classList.add('today');
+
+        if(!isFuture && !beforeStart && isScheduled){
+          trackedDays++;
+          cell.onclick = () => {
+            const next = lvl >= 4 ? 0 : lvl + 1;
+            if(next === 0) delete t.completions[k]; else t.completions[k] = next;
+            save(); render();
+          };
+        } else {
+          cell.disabled = true;
+        }
+        grid.appendChild(cell);
+      }
+      card.appendChild(grid);
+
+      const legend = document.createElement('div');
+      legend.className = 'habit-legend';
+      legend.innerHTML = '<span>less</span>';
+      for(let i = 0; i <= 4; i++){
+        const sw = document.createElement('span');
+        sw.className = 'hcell' + (i > 0 ? ' l' + i : '');
+        legend.appendChild(sw);
+      }
+      const more = document.createElement('span');
+      more.textContent = 'more';
+      legend.appendChild(more);
+      card.appendChild(legend);
+
+      const stats = document.createElement('div');
+      stats.className = 'habit-stats';
+      stats.textContent = `${doneCount} / ${trackedDays} day${trackedDays === 1 ? '' : 's'} this month · click a square to cycle its intensity`;
+      card.appendChild(stats);
+
+      boardEl.appendChild(card);
+    });
+  }
+
+  const habitCheck = document.getElementById('habitCheck');
+  const dayPicker = document.getElementById('dayPicker');
+  const repeatModeToggle = document.getElementById('repeatModeToggle');
+  const dayChipRow = document.getElementById('dayChipRow');
+  const intervalRow = document.getElementById('intervalRow');
+  const intervalN = document.getElementById('intervalN');
+  const intervalUnit = document.getElementById('intervalUnit');
+  const dueDateRow = document.getElementById('dueDateRow');
+  const dueDateInput = document.getElementById('dueDateInput');
+  let addRepeatMode = 'weekdays'; // 'weekdays' | 'interval' — which recurrence style the add-form is set to
+
+  habitCheck.addEventListener('change', () => {
+    dayPicker.style.display = habitCheck.checked ? 'flex' : 'none';
+    dueDateRow.style.display = habitCheck.checked ? 'none' : 'flex'; // due dates are a one-off-task concept, not a habit one
+  });
+  dayPicker.querySelectorAll('.day-chip').forEach(chip => {
+    chip.addEventListener('click', () => chip.classList.toggle('active'));
+  });
+  repeatModeToggle.querySelectorAll('.seg').forEach(btn => {
+    btn.addEventListener('click', () => {
+      addRepeatMode = btn.dataset.mode;
+      repeatModeToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b === btn));
+      dayChipRow.style.display = addRepeatMode === 'weekdays' ? 'flex' : 'none';
+      intervalRow.style.display = addRepeatMode === 'interval' ? 'flex' : 'none';
+    });
+  });
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const val = input.value.trim();
+    if(!val) return;
+    const today = todayKey();
+    if(habitCheck.checked){
+      let repeat;
+      if(addRepeatMode === 'interval'){
+        const n = Math.max(1, Number(intervalN.value) || 1);
+        repeat = { mode:'interval', unit: intervalUnit.value, n };
+      } else {
+        let days = [...dayPicker.querySelectorAll('.day-chip.active')].map(c => Number(c.dataset.day));
+        if(days.length === 0) days = [0,1,2,3,4,5,6]; // safety net: don't allow a habit scheduled on zero days
+        repeat = { mode:'weekdays', days };
+      }
+      todos.push({
+        id: newId(), text: val, type:'habit', category: listCategory,
+        createdDate: today, repeat, days: repeat.mode === 'weekdays' ? repeat.days : [],
+        quadrant:'schedule', completions: {}
+      });
+    } else {
+      const due = dueDateInput.value || null;
+      todos.push({ id: newId(), text: val, type:'task', done:false, date: today, createdDate: today, quadrant: null, category: listCategory, dueDate: due });
+    }
+    save(); render();
+    closeAddModal();
+  });
+
+  // ---- add-task modal: opened by the "+ add" button instead of an always-visible form ----
+  const addTaskTriggerBtn = document.getElementById('addTaskTriggerBtn');
+  const addModalOverlay = document.getElementById('addModalOverlay');
+  const addModalClose = document.getElementById('addModalClose');
+  const addModalCat = document.getElementById('addModalCat');
+
+  function resetAddForm(){
+    input.value = '';
+    habitCheck.checked = false;
+    dayPicker.style.display = 'none';
+    dueDateRow.style.display = 'flex';
+    dueDateInput.value = '';
+    addRepeatMode = 'weekdays';
+    repeatModeToggle.querySelectorAll('.seg').forEach(b => b.classList.toggle('active', b.dataset.mode === 'weekdays'));
+    dayChipRow.style.display = 'flex';
+    intervalRow.style.display = 'none';
+    dayPicker.querySelectorAll('.day-chip').forEach(c => c.classList.add('active'));
+  }
+  function openAddModal(){
+    addModalCat.textContent = listCategory === 'personal' ? 'Personal' : 'Work';
+    addModalOverlay.classList.add('open');
+    input.focus();
+  }
+  function closeAddModal(){
+    addModalOverlay.classList.remove('open');
+    resetAddForm();
+  }
+  addTaskTriggerBtn.addEventListener('click', openAddModal);
+  addModalClose.addEventListener('click', closeAddModal);
+  addModalOverlay.addEventListener('click', e => { if(e.target === addModalOverlay) closeAddModal(); });
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && addModalOverlay.classList.contains('open')) closeAddModal();
+  });
+
+  // ---- backup: JSON export / import / copy-to-clipboard ----
+  // Everything lives in localStorage tied to one browser+origin, so this is
+  // the only way to move data between browsers/devices or keep an offline copy.
+  const exportBtn = document.getElementById('exportBtn');
+  const importBtn = document.getElementById('importBtn');
+  const importFile = document.getElementById('importFile');
+  const copyBackupBtn = document.getElementById('copyBackupBtn');
+  const backupHint = document.getElementById('backupHint');
+
+  function buildBackup(){
+    return {
+      app: 'ledger-todos',
+      backupSchemaVersion: 1,
+      exportedAt: new Date().toISOString(),
+      todos,
+      dailyReports,
+      goals
+    };
+  }
+
+  function flashHint(msg, isError){
+    backupHint.textContent = msg;
+    backupHint.style.color = isError ? 'var(--clay)' : 'var(--moss)';
+    setTimeout(() => { backupHint.textContent = ''; }, 2500);
+  }
+
+  exportBtn.addEventListener('click', () => {
+    const json = JSON.stringify(buildBackup(), null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `ledger-backup-${todayKey()}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    flashHint('downloaded ✓');
+  });
+
+  copyBackupBtn.addEventListener('click', () => {
+    const json = JSON.stringify(buildBackup());
+    const onDone = ok => flashHint(ok ? 'copied to clipboard ✓' : 'copy failed', !ok);
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(json).then(() => onDone(true)).catch(() => fallbackCopy(json, onDone));
+    } else {
+      fallbackCopy(json, onDone);
+    }
+  });
+
+  importBtn.addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const file = importFile.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      let data;
+      try{
+        data = JSON.parse(reader.result);
+      }catch(e){
+        flashHint('that file isn\'t valid JSON', true);
+        importFile.value = '';
+        return;
+      }
+      if(!data || !Array.isArray(data.todos)){
+        flashHint('unrecognized backup file', true);
+        importFile.value = '';
+        return;
+      }
+      const ok = confirm(
+        `Import this backup?\n\n${data.todos.length} task/habit record(s)` +
+        (data.exportedAt ? `, exported ${new Date(data.exportedAt).toLocaleString()}` : '') +
+        `.\n\nThis REPLACES everything currently in the app (tasks, habits, reports, goals). This can't be undone.`
+      );
+      if(!ok){ importFile.value = ''; return; }
+
+      todos = data.todos;
+      migrateTodos(todos);
+      dailyReports = (data.dailyReports && typeof data.dailyReports === 'object') ? data.dailyReports : {};
+      goals = (data.goals && typeof data.goals === 'object') ? data.goals : {};
+
+      save(); saveReports(); saveGoals();
+      habitMonthOffset = 0;
+      editingDaysFor = null;
+      importFile.value = '';
+      flashHint('backup restored ✓');
+      render();
+    };
+    reader.onerror = () => flashHint('could not read that file', true);
+    reader.readAsText(file);
+  });
+
+  // sync across the main window and the floating PiP window
+  window.addEventListener('storage', e => {
+    if(e.key === KEY){
+      todos = JSON.parse(e.newValue || '[]');
+      render();
+    }
+  });
+
+  render();
+
+  // ---- date/time awareness: notice midnight rolling over even if the tab
+  // is left open and untouched, and re-render so "Today" stays correct ----
+  let lastKnownDay = todayKey();
+  function checkDayRollover(){
+    const now = todayKey();
+    if(now !== lastKnownDay){
+      // the day that just ended is now finalized — lock in its report
+      getReport(lastKnownDay);
+      autoCarryOverdueTasks();
+      lastKnownDay = now;
+      render();
+      checkDueReminders();
+    }
+  }
+  setInterval(checkDayRollover, 60000);
+  document.addEventListener('visibilitychange', () => { if(!document.hidden) checkDayRollover(); });
+  window.addEventListener('focus', checkDayRollover);
+
+  // ---- due-date reminders: starts flagging an item 24h before its due date
+  // (i.e. from the day before through the due date itself, and stays flagged
+  // if it's overdue) and pops up a summary each time the app is opened ----
+  const dueModal = document.getElementById('dueModal');
+  const dueModalList = document.getElementById('dueModalList');
+  document.getElementById('dueModalOk').addEventListener('click', () => { dueModal.style.display = 'none'; });
+
+  function checkDueReminders(){
+    const today = todayKey();
+    const due = todos.filter(t => t.type === 'task' && !t.done && t.dueDate && diffDays(t.dueDate, today) <= 1);
+    if(due.length === 0) return;
+
+    due.sort((a, b) => a.dueDate < b.dueDate ? -1 : 1);
+    dueModalList.innerHTML = '';
+    due.forEach(t => {
+      const untilDue = diffDays(t.dueDate, today);
+      const pretty = keyToDate(t.dueDate).toLocaleDateString(undefined, { month:'long', day:'numeric' });
+      let when;
+      if(untilDue < 0) when = `overdue — was due ${pretty}`;
+      else if(untilDue === 0) when = `due today (${pretty})`;
+      else when = `due tomorrow (${pretty})`;
+      const li = document.createElement('li');
+      li.style.marginBottom = '4px';
+      const b = document.createElement('b');
+      b.textContent = t.text; // set via textContent, not innerHTML, so task text can't inject markup
+      li.append(b, ` — ${when}`);
+      dueModalList.appendChild(li);
+    });
+    dueModal.style.display = 'flex';
+  }
+  checkDueReminders(); // check once on this open of the app
+
+  // ---- Document Picture-in-Picture: the "floats over other tabs" part ----
+  const supported = 'documentPictureInPicture' in window;
+  pipSupport.textContent = supported ? '' : '(needs Chrome/Edge)';
+
+  let currentPipWindow = null;
+  const FULL_SIZE = { w: 300, h: 380 };
+  const MINI_SIZE = { w: 88, h: 88 };
+  let lastFullSize = { ...FULL_SIZE }; // remembers the size you last manually resized the popped-out window to
+
+  function setMini(isMini){
+    if(!currentPipWindow) return;
+    if(isMini){
+      // capture whatever size the window is currently at (including manual
+      // drag-resizes) before shrinking, so un-minimizing can restore it
+      const w = currentPipWindow.innerWidth, h = currentPipWindow.innerHeight;
+      if(w && h) lastFullSize = { w, h };
+    }
+    currentPipWindow.document.body.classList.toggle('mini', isMini);
+    const size = isMini ? MINI_SIZE : lastFullSize;
+    try{ currentPipWindow.resizeTo(size.w, size.h); }catch(e){}
+  }
+
+  document.getElementById('minBtn').addEventListener('click', () => setMini(true));
+  document.getElementById('miniBadge').addEventListener('click', () => setMini(false));
+
+  popBtn.addEventListener('click', async () => {
+    if(!supported){
+      alert('Your browser doesn\'t support Document Picture-in-Picture yet. Try Chrome or Edge (desktop).');
+      return;
+    }
+    lastFullSize = { ...FULL_SIZE }; // fresh pop-out session starts at the default size
+    const pipWindow = await window.documentPictureInPicture.requestWindow({
+      width: FULL_SIZE.w,
+      height: FULL_SIZE.h
+    });
+    currentPipWindow = pipWindow;
+
+    // copy this page's styles into the PiP window
+    [...document.styleSheets].forEach(sheet => {
+      try{
+        const css = [...sheet.cssRules].map(r => r.cssText).join('\n');
+        const style = document.createElement('style');
+        style.textContent = css;
+        pipWindow.document.head.appendChild(style);
+      }catch(e){}
+    });
+
+    pipWindow.document.body.classList.add('pip-mode');
+    pipWindow.document.body.appendChild(sheet);
+
+    function reattach(){
+      if(sheet.isConnected && sheet.ownerDocument === document){
+        // already back in the main tab, nothing to do
+        return;
+      }
+      document.body.classList.remove('pip-mode', 'mini');
+      document.body.appendChild(sheet);
+      render(); // rebuild list in case anything was mid-edit
+    }
+
+    // Primary signal: the PiP window firing pagehide when it closes.
+    pipWindow.addEventListener('pagehide', () => {
+      reattach();
+      currentPipWindow = null;
+    }, { once: true });
+
+    // Fallback: pagehide isn't 100% reliable across Chrome versions for
+    // Document Picture-in-Picture, so also poll pipWindow.closed directly.
+    const watcher = setInterval(() => {
+      if(pipWindow.closed){
+        clearInterval(watcher);
+        reattach();
+        currentPipWindow = null;
+      }
+    }, 300);
+  });
+})();
+</script>
+</body>
+</html>
